@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>命令测试</title>
+  </head>
+  <body>
+    <table>
+      <tr><td><font size="5">命令测试</font></td></tr>
+    <table>
+    <table>
+      <div id="statusText">欢迎</></div>
+    <table>
+    <table border="1">
+      <tr>
+        <td>连接</td>
+        <td><button onclick=connect(); >连接</button></td>
+        <td>断开</td>
+        <td><button onclick=disconnect(); >断开(*)</button></td>
+      </tr>
+      <tr>
+        <td>当前温度</td>
+        <td><button onclick=send_str("&gt;get_t\;"); >当前温度</button></td>
+        <td>当前功率</td>
+        <td><button onclick=send_str("&gt;get_p\;"); >当前功率</button></td>
+      </tr>
+      <tr>
+        <td>命令</td>
+        <td>功率,温度</td>
+        <td>时间</td>
+        <td>执行</td>
+      </tr>
+      <tr>
+        <td>恒定功率</td>
+        <td><input type="text" name="int11" id="int11" value="600" size=5 /></td>
+        <td><input type="text" name="int12" id="int12" value="120" size=5 /></td>
+        <td><button onclick=run_p(); >恒定功率</button></td>
+      </tr>
+      <tr>
+        <td>恒定温度</td>
+        <td><input type="text" name="int21" id="int21" value="100" size=5 /></td>
+        <td><input type="text" name="int22" id="int22" value="180" size=5 /></td>
+        <td><button onclick=run_at(); >恒定温度</button></td>
+      </tr>
+      <tr>
+        <td>加热到</td>
+        <td><input type="text" name="int31" id="int31" value="100" size=5 /></td>
+        <td><input type="text" name="int32" id="int32" value="1" size=5 /></td>
+        <td><button onclick=run_to(); >加热到</button></td>
+      </tr>
+
+    </table>
+
+    <table>
+      <font size = "3" color = "blue"> 版权所有 @</font>
+    </table>
+    <script src="app.js"></script>
+  </body>
+</html>
