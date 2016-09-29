@@ -3,57 +3,10 @@ var cb_info1 = document.querySelector('#info1');
 var cb_info2 = document.querySelector('#info2');
 var cb_info3 = document.querySelector('#info3');
 
-
-var cb_cmds = [
-">set_c 0,0,s,0,1;",
-">set_c 1,2,s,180,1;",
-">set_c 2,3,n,180,900;",
-">set_c 3,4,s,0,1;",
-">set_c 4,2,s,220,1;",
-">set_c 5,3,n,220,300;",
-">set_c 6,4,s,0,1;",
-
-">run_c;"
-];
-
-
-/*
-var cb_cmds = [
-">set_c 0,0,s,0,1;",
-">set_c 1,3,s,180,20;",
-">set_c 2,3,n,180,90;",
-">set_c 3,4,s,0,1;",
-">set_c 4,3,s,220,10;",
-">set_c 5,3,n,220,30;",
-">set_c 6,4,s,0,1;",
-
-">run_c;"
-];
-*/
-
-var cb_start = [
-"准备好食材,并把油放入锅中,然后点\"下一步\"",
-"加热到180摄氏度",
-"炸熟排骨",
-"请捞出排骨,然后点\"下一步\"",
-"加热到220摄氏度",
-"炸脆排骨",
-"",
-
-""
-];
-
-var cb_end = [
-"",
-"把排骨放入锅中,然后点\"下一步\"",
-"",
-"",
-"把排骨放入锅中,然后点\"下一步\"",
-"",
-"请捞出排骨并装盘,然后点\"下一步\"完成烹饪",
-
-""
-];
+var cb_cmds= new Array();
+var cb_start = new Array();
+var cb_end = new Array();
+var cb_index = 0;
 
 
 function cb_getlen() {
@@ -102,4 +55,28 @@ function cb_showinfo(s, lv) {
   } else {
     cb_info3.textContent = s;
   }
+}
+
+function set_c() {
+  s = ">set_c " + cb_index + "," + document.getElementById("in_2").value + "," + document.getElementById("in_3").value  + "," + document.getElementById("in_4").value + "," + document.getElementById("in_5").value + ";";
+  cb_cmds[cb_index] = s;
+  cb_start[cb_index] = document.getElementById("in_s").value;
+  cb_end[cb_index] = document.getElementById("in_e").value;
+  cb_index = cb_index + 1;
+  cb_cmds[cb_index] = ">run_c;";
+  document.getElementById("in_index").value = cb_index.toString();
+  document.getElementById("in_s").value = "第" + cb_index + "步";
+  document.getElementById("in_e").value = "";
+}
+
+
+function reset_c() {
+  cb_index = 0;
+  cb_cmds = new Array();
+  cb_start = new Array();
+  cb_end= new Array();
+
+  document.getElementById("in_index").value = "0";
+  document.getElementById("in_s").value = "第" + cb_index + "步";
+  document.getElementById("in_e").value = "";
 }

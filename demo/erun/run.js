@@ -98,6 +98,7 @@ function send_str(s) {
   let bytes = new Uint8Array(s.split('').map(c => c.charCodeAt()));
   if (con_if) {
     g_write_char.writeValue(bytes);
+    cb_showerr(s);
   } else {
     cb_showerr("未连接,发送\"" + s + "\"失败", 0);
   }
