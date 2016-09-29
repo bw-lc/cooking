@@ -64,7 +64,7 @@ function connect() {
             } else if (s == ">E5;") {
               cb_showerr("没有按照顺序设置食谱", 0);
             } else if (s.substring(0, 6) != ">info "  || s.substring(i - 1, i) != ";") {
-                statusText.textContent = s;
+                cb_showinfo(s, 0);
             } else {
               s2 = s.substring(6, i - 1);
               ss = s2.split(",");
@@ -74,7 +74,7 @@ function connect() {
                 _i = parseInt(ss[0]);
                 _s = parseInt(ss[1]);
                 _t = parseFloat(ss[2]);
-                if (_i < g_cmds.length) {
+                if (_i < g_len) {
                   if (_i != g_old_runing) {
                     cb_show_start(_i);
                     g_old_runing = _i;
