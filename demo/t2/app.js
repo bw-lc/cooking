@@ -89,11 +89,27 @@ function connect() {
   });
 }
 
-function send_str(s) {
-  statusText.textContent = "正在执行...";
+function __send_str2(s) {
   let bytes = new Uint8Array(s.split('').map(c => c.charCodeAt()));
+  g_write_char.writeValue(bytes);
+}
+
+function __send_str(s) {
+  len = s.length;
+  if (len > 20) {
+    s1 = s.substring(0, 20);
+    s2 = s.substring(20, len);
+    __send_str2(s1);
+    setTimeout("__send_str(s2);", 100);
+  } else {
+    __send_str2(s);
+  }
+}
+
+function send_str(s) {
   if (con_if) {
-    g_write_char.writeValue(bytes);
+    statusText.textContent = "正在执行...", 0;
+    __send_str(s);
   } else {
     alert("未连接,发送\"" + s + "\"失败");
   }
@@ -119,4 +135,8 @@ function reset_c() {
 
 function run_c() {
   send_str(">run_c;");
+}
+
+function pause(f) {
+  send_str(">pause " + f + ";");
 }

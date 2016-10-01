@@ -3,19 +3,17 @@ var cb_info1 = document.querySelector('#info1');
 var cb_info2 = document.querySelector('#info2');
 var cb_info3 = document.querySelector('#info3');
 
-
 var cb_cmds = [
 ">set_c 0,0,s,0,1;",
 ">set_c 1,2,s,180,1;",
-">set_c 2,3,n,180,90;",
+">set_c 2,3,n,180,900;",
 ">set_c 3,4,s,0,1;",
 ">set_c 4,2,s,220,1;",
-">set_c 5,3,n,220,30;",
+">set_c 5,3,n,220,300;",
 ">set_c 6,4,s,0,1;",
 
 ">run_c;"
 ];
-
 
 /*
 var cb_cmds = [

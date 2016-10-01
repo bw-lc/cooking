@@ -55,12 +55,29 @@ function disconnect() {
   g_device = false;
 }
 
-function send_str(s) {
+function __send_str2(s) {
   let bytes = new Uint8Array(s.split('').map(c => c.charCodeAt()));
-  if (con_if) {
-    g_write_char.writeValue(bytes);
+  g_write_char.writeValue(bytes);
+}
+
+function __send_str(s) {
+  len = s.length;
+  if (len > 20) {
+    s1 = s.substring(0, 20);
+    s2 = s.substring(20, len);
+    __send_str2(s1);
+    setTimeout("__send_str(s2);", 100);
   } else {
-    alert(s);
+    __send_str2(s);
+  }
+}
+
+function send_str(s) {
+  if (con_if) {
+    statusText.textContent = "正在执行...";
+    __send_str(s);
+  } else {
+    alert("未连接,发送\"" + s + "\"失败");
   }
 }
 

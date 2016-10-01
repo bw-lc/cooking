@@ -13,7 +13,7 @@ var g_show_flg;
 
 function connect() {
   cb_showinfo('等待...', 0);
-  navigator.bluetooth.requestDevice({filters:[{ 'namePrefix': ['bwdcl-']}],	'optionalServices': [0xffe5, 0xffe0]})
+  navigator.bluetooth.requestDevice({filters:[{ 'namePrefix': ['bwdcl-']}], 'optionalServices': [0xffe5, 0xffe0]})
   .then(device => device.gatt.connect())
   .then(device => {
     g_device = device;
@@ -35,8 +35,8 @@ function connect() {
             for (var i = 0; i < event.target.value.byteLength; i++) {
             s = s + String.fromCharCode(event.target.value.getInt8(i));
           }
-          
-          //alert(s);
+
+
           if (s.substring(0, 1) == ">"  && s.substring(i - 1, i) == ";") {
 
             if (s == ">await;") {
@@ -68,6 +68,7 @@ function connect() {
             } else {
               s2 = s.substring(6, i - 1);
               ss = s2.split(",");
+
               if (ss.length != 3) {
                 cb_showinfo(s, 0);
               } else {
@@ -93,11 +94,27 @@ function connect() {
   });
 }
 
-function send_str(s) {
-  //cb_showinfo("正在执行...", 0);
+function __send_str2(s) {
   let bytes = new Uint8Array(s.split('').map(c => c.charCodeAt()));
+  g_write_char.writeValue(bytes);
+}
+
+function __send_str(s) {
+  len = s.length;
+  if (len > 20) {
+    s1 = s.substring(0, 20);
+    s2 = s.substring(20, len);
+    __send_str2(s1);
+    setTimeout("__send_str(s2);", 100);
+  } else {
+    __send_str2(s);
+  }
+}
+
+function send_str(s) {
   if (con_if) {
-    g_write_char.writeValue(bytes);
+    cb_showinfo("正在执行...", 0);
+    __send_str(s);
   } else {
     cb_showerr("未连接,发送\"" + s + "\"失败", 0);
   }
@@ -110,7 +127,7 @@ function send_cmd() {
     send_str(s);
     return true;
   }
-  
+
   return false;
 }
 
@@ -124,5 +141,8 @@ function run_c() {
   g_old_runing = -1;
   g_show_flg = false;
   send_cmd();
-  
+}
+
+function pause(f) {
+  send_str(">pause " + f + ";");
 }
