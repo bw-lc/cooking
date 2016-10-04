@@ -5,11 +5,11 @@ var cb_info3 = document.querySelector('#info3');
 
 var cb_cmds = [
 ">set_c 0,0,s,0,1;",
-">set_c 1,2,s,80,1;",
-">set_c 2,3,n,80,90;",
+">set_c 1,2,s,60,1;",
+">set_c 2,3,n,60,90;",
 ">set_c 3,4,s,0,1;",
-">set_c 4,2,s,120,1;",
-">set_c 5,3,n,120,30;",
+">set_c 4,2,s,90,1;",
+">set_c 5,3,n,90,30;",
 ">set_c 6,4,s,0,1;",
 
 ">run_c;"
