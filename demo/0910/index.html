@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<title>慧做饭</title>
+	<link rel="stylesheet" href="./css/weui.min.css"/>
+    <link rel="stylesheet" href="./css/jquery-weui.min.css">
+    <link rel="stylesheet" href="https://weui.io/example.css">
+
+    <script src="./js/jquery-2.1.4.js"></script>
+	<script src="./js/jquery-weui.min.js"></script>
+
+	<script src="./js/swiper.min.js"></script>
+
+	<style type="text/css">
+		.hd-nav{height:3.6rem;line-height:1.5rem;background-color:#fff;padding:0.3rem 0;}
+		.hd-nav ul{width:100%;}
+		.hd-nav ul li:nth-child(5n+1){margin-left:3.91%;}
+		.hd-nav ul li:nth-child(5n+5){width:25.41%;}
+		.hd-nav ul li{display: inline-block;width:16.6%;font-size:0.7rem;float: left;text-align: center;box-sizing:content-box;}
+		.hd-nav ul li a{color:#464646;display:inline-block;width:100%;height:100%;}
+		.hd-nav ul li:active a{color:#ff8f5c;}
+
+	</style>
+</head>
+
+<body ontouchstart>
+	<div class="weui_cells"style=" margin-top: 0px;//border: 1px solid #E64A19; //border-radius: 5px;margin-bottom:0px;position: fixed;z-index: 99;width: 100%;">
+		    <div class="weui_cell" style="background-color:#E64A19   ;text-align: center;height: 30px;line-height: 30px;">
+		        <div class="weui_cell_bd weui_cell_primary"  >
+		            <p style="color:#FFFFFF;float: left;margin-left: 20px;"><b>锅内温度-</b></p>
+		            <p style="color:#FFFFFF;margin-left: 20px;"><b>时间-：-：-</b></p>
+		        </div>
+
+		    </div>
+		</div>
+
+	<div class="continer" id="continer" >
+		<div class="weui_search_bar" id="search_bar" >
+		  <form class="weui_search_outer"style="margin-top: 50px;">
+		    <div class="weui_search_inner">
+		      <i class="weui_icon_search"></i>
+		      <input type="search" class="weui_search_input" id="search_input" placeholder="搜索" required/ >
+		      <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
+		    </div>
+		    <label for="search_input" class="weui_search_text" id="search_text">
+		      <i class="weui_icon_search"></i>
+		      <span>搜索</span>
+		    </label>
+		  </form>
+		  <a href="javascript:" class="weui_search_cancel" id="search_cancel">取消</a>
+		</div>
+
+		<nav class="hd-nav">
+	        <ul>
+	            <li class="active"><a href="/index.php" target="_self" class="ui-link">早餐</a></li>
+	            <li><a href="/topic/index.html?" target="_self" class="ui-link">主食</a></li>
+	            <li><a href="/course/index.html?" target="_self" class="ui-link">热菜</a></li>
+	            <li><a href="/category/subtype.html?type=2" target="_self" class="ui-link">菜系</a></li>
+	            <li><a href="/category/subtype.html?" target="_self" class="ui-link">人气菜肴</a></li>
+	            <li><a href="/market/index.html?" target="_self" class="ui-link">宵夜</a></li>
+	            <li><a href="/scene/list.html?" target="_self" class="ui-link">小吃</a></li>
+	            <li><a href="/community/list.html?" target="_self" class="ui-link">凉菜</a></li>
+	            <li><a href="/activity/index.html?" target="_self" class="ui-link">特色</a></li>
+	            <li><a href="/Tour.html" target="_self" class="ui-link">所有分类</a></li>
+	        </ul>
+	    </nav>
+
+	    <div class="banner">
+	        <div class="swiper-container swiper-container-horizontal">
+	            <div class="swiper-wrapper" id="banners-wrap">
+	                <div class="swiper-slide">
+                        <a href="#" target="_self">
+                            <img src="./img/a.jpg" class="wimg" alt="">
+                        </a>
+                	</div><div class="swiper-slide">
+                        <a href="#" target="_self">
+                            <img src="./img/b.jpg" class="wimg" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#" target="_self">
+                            <img src="./img/c.jpg" class="wimg" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#" target="_self">
+                            <img src="./img/d.jpg" class="wimg" alt="">
+                        </a>
+                    </div>
+	            </div>
+	            <div class="swiper-pagination swiper-pagination-clickable">
+	                <span class="swiper-pagination-bullet"></span>
+	            </div>
+	        </div>
+	    </div>
+
+
+
+		<div class="weui_grids">
+		  <a href="javascript:;" class="weui_grid js_grid" data-id="button">
+		    <div class="weui_grid_icon">
+		      <img src="./img/xiaochao-ico.png" alt="">
+		    </div>
+		    <p class="weui_grid_label">
+		      三分钟小炒
+		    </p>
+		  </a>
+		  <a href="javascript:;" class="weui_grid js_grid" data-id="button">
+		    <div class="weui_grid_icon">
+		      <img src="./img/jiachangcai-ico.png" alt="">
+		    </div>
+		    <p class="weui_grid_label">
+		      简易家m常菜
+		    </p>
+		    <a href="javascript:;" class="weui_grid js_grid" data-id="button">
+		    <div class="weui_grid_icon">
+		      <img src="./img/sucai-ico.png" alt="">
+		    </div>
+		    <p class="weui_grid_label">
+		      健康素菜
+		    </p>
+		  </a>
+		  </a>
+		  <a href="私人订制.html#banners-wrap" class="weui_grid js_grid" data-id="button">
+		    <div class="weui_grid_icon">
+		      <img src="./img/srdz.png" alt="" style="width: 50px;height: 50px; position: relative;left: -10px;top: -7px;">
+		    </div>
+		    <p class="weui_grid_label">
+		      私人订制
+		    </p>
+		  </a>
+
+		  <a href="做过的菜.html" class="weui_grid js_grid" data-id="button">
+		    <div class="weui_grid_icon">
+		      <img src="./img/haixian-ico.png" alt="">
+		    </div>
+		    <p class="weui_grid_label">
+		      做过的菜
+		    </p>
+		  </a>
+		  <a href="收藏.html" class="weui_grid js_grid" data-id="button">
+		    <div class="weui_grid_icon">
+		      <img src="./img/sc.jpg" alt="" style="border-radius: 10px;">
+		    </div>
+		    <p class="weui_grid_label">
+		      我的收藏
+		    </p>
+		  </a>
+		</div>
+
+		<div class="weui_panel weui_panel_access">
+		  <div class="weui_panel_hd">热门推荐</div>
+		  <div class="weui_panel_bd">
+		    <a href="cooking.html" class="weui_media_box weui_media_appmsg">
+		      <div class="weui_media_hd">
+		        <img class="weui_media_appmsg_thumb" src="./img/img.png" alt="">
+		      </div>
+		      <div class="weui_media_bd">
+		        <h4 class="weui_media_title">金牌蒜香排骨</h4>
+		        <p class="weui_media_desc">这道菜精华在于蒜末金黄、突出蒜香，排骨要炸焦熟。小火炸避免炸糊。</p>
+		      </div>
+		    </a>
+		    <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
+		      <div class="weui_media_hd">
+		        <img class="weui_media_appmsg_thumb" src="./img/2.jpg" alt="">
+		      </div>
+		      <div class="weui_media_bd">
+		        <h4 class="weui_media_title">金秋穗月</h4>
+		        <p class="weui_media_desc">又是一年中秋。
+想到中秋，先便是月，圆月阙月，阴晴圆缺；再就是收获，果实成熟，麦穗压满了枝头。
+便把这二者结合起来，穗满月梢。
+金秋“穗”月。月圆人团圆。</p>
+		      </div>
+		    </a>
+		  </div>
+		  <a class="weui_panel_ft" href="javascript:void(0);">查看更多</a>
+		</div>
+
+	</div>
+
+	<script>
+	var shop=(function(){
+	    var swiper = new Swiper('.swiper-container', {
+	        pagination: '.swiper-pagination',
+	        paginationClickable: true,
+	        loop: true,
+	        autoplay: 2000
+	    });
+	})();
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>恒定功率模式</title>
+    <link rel="stylesheet" href="./css/weui.min.css"/>
+    <link rel="stylesheet" href="./css/jquery-weui.min.css">
+
+    <script src="./js/jquery-2.1.4.js"></script>
+	<script src="./js/jquery-weui.min.js"></script>
+
+	<script src="./js/swiper.min.js"></script>
+</head>
+<body>
+
+		<div class="weui_cells" style=" margin-top: 0px;">
+		    <div class="weui_cell" style="background-color: #E64A19;text-align: center;height: 40px;line-height: 40px;//margin-top: -20px;">
+		        <div class="weui_cell_bd weui_cell_primary" >
+		            <p style="color:#FFFFFF;"><b>恒定功率模式</b></p>
+		        </div>
+
+		    </div>
+		</div>
+	<div class="container" id="container">
+
+		<div class="weui_cells">
+			<div class="weui_cell weui_cell_select weui_select_after">
+	            <div class="weui_cell_hd">
+	                <label for="" class="weui_label">设置功率</label>
+	            </div>
+	            <div class="weui_cell_bd weui_cell_primary">
+	                <select class="weui_select" id="select1" onchange="getPower()">
+	                    <option value="1000">1000</option>
+	                    <option value="2000">2000</option>
+	                    <option value="3000">3000</option>
+	                </select>
+	            </div>
+	        </div>
+
+	        <div class="weui_cell">
+	            <div class="weui_cell_bd weui_cell_primary">
+	                <p>当前功率</p>
+	            </div>
+	            <div class="weui_cell_ft" id="power" style="flex:2; text-align:left;">1000W</div>
+	        </div>
+	    </div>
+
+		<div class="weui_cells">
+	        <div class="weui_cell">
+	            <div class="weui_cell_hd"><label for="" class="weui_label">小时</label></div>
+	            <div class="weui_cell_bd weui_cell_primary">
+	                <input type="text" id='hour' class="weui_input" value="点击选择小时" />
+					<script>
+					$("#hour").picker({
+					  title: "请选择小时",
+					  cols: [
+					    {
+					      textAlign: 'center',
+					      values: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24']
+					    }
+					  ]
+					});
+					</script>
+	            </div>
+	        </div>
+
+	        <div class="weui_cell">
+	            <div class="weui_cell_hd"><label for="" class="weui_label">分钟</label></div>
+	            <div class="weui_cell_bd weui_cell_primary">
+	                <input type="text" id='min' class="weui_input" value="点击选择分钟" />
+					<script>
+					$("#min").picker({
+					  title: "请选择分钟",
+					  cols: [
+					    {
+					      textAlign: 'center',
+					      values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+					    }
+					  ]
+					});
+					</script>
+	            </div>
+	        </div>
+
+	        <div class="weui_cell">
+	            <div class="weui_cell_hd"><label for="" class="weui_label">秒</label></div>
+	            <div class="weui_cell_bd weui_cell_primary">
+	                <input type="text" id='second' class="weui_input" value="点击选择秒" />
+					<script>
+					$("#second").picker({
+					  title: "请选择秒",
+					  cols: [
+					    {
+					      textAlign: 'center',
+					      values: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+					    }
+					  ]
+					});
+					</script>
+	            </div>
+	        </div>
+	    </div>
+
+		<div class="weui_cells">
+		    <div class="weui_cell weui_cell_switch">
+		        <div class="weui_cell_hd weui_cell_primary" >时间到达提示</div>
+		        <div class="weui_cell_ft">
+		            <input class="weui_switch" type="checkbox">
+
+		        </div>
+		    </div>
+		    <div class="weui_cell weui_cell_switch">
+		        <div class="weui_cell_hd weui_cell_primary" >临界温度报警并关闭</div>
+		        <div class="weui_cell_ft">
+		            <input class="weui_switch" type="checkbox">
+		        </div>
+		    </div>
+		</div>
+
+		<div class="weui_cells">
+		    <div class="weui_cell">
+		        <div class="weui_cell_hd"><label class="weui_label" >临界温度</label></div>
+		        <div class="weui_cell_bd weui_cell_primary">
+		            <input class="weui_input" type="number" pattern="[0-9]*" placeholder="请输入临界温度">
+		        </div>
+		    </div>
+		</div>
+
+	    <div class="weui_btn_area">
+	        <a class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips" style="background-color: #08607F;">确定</a>
+	    </div>
+
+	    <div class="weui_btn_area">
+	        <a class="weui_btn weui_btn_warn" href="javascript:" id="showTooltips" style="background-color: #08607F;">取消</a>
+	    </div>
+
+	</div>
+
+	<script>
+		function getPower() {
+			var i = document.getElementById("select1");
+			var power = document.getElementById("power");
+			power.innerHTML = i.value + "W";
+		}
+	</script>
+</body>
+</html>
+
