@@ -1,6 +1,25 @@
+<!DOCTYPE HTML>
+<html>
 <head>
-<meta content="0;URL=/cooking/demo3/index.html" http-equiv="refresh"/>
+<script src="/cordova.js"></script>
+<script>
+function on_load() {
+  var access_id;
+  try {
+    access_id = parseInt(localStorage.getItem("access_id"));
+  }
+  catch(err) {
+    access_id = 0;
+  }
+  if (isNaN(access_id)) {
+    access_id = 0;
+  }
+  access_id = access_id + 1;
+  localStorage.setItem("access_id", access_id);
+  window.location.href="/cooking/demo3/index.html?access_id=" + access_id.toString();
+}
+</script>
 </head>
-<body>
+<body onload="on_load()">
 </body>
 </html>
