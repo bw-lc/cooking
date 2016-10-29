@@ -38,9 +38,10 @@ function __cb_onInit(swiper) {
   __temperature.textContent = swiper.params.temperature;
   __time.textContent = swiper.params.time;
 
-  __play.onclick=cb_play_onclick;
-  __connect.onclick=cb_connect_onclick;
-  __mute.onclick=cb_mute_onclick;
+  __play.onclick = cb_play_onclick;
+  __connect.onclick = cb_connect_onclick;
+  __mute.onclick = cb_mute_onclick;
+  __time.onclick = cb_last;
 }  
 
 function cb_onInit(swiper) {
@@ -54,13 +55,18 @@ function cb_onSlideChangeStart(swiper) {
   if (swiper.activeIndex == 1) {
     gcb_media.play();
     gcb_media_end.play();
-    //gcb_media.pause();
-    //gcb_media_end.pause();
+    gcb_media.pause();
+    gcb_media_end.pause();
   }
   
   if(!swiper.isEnd) {
     __cb_onInit(swiper);
   }
+}
+
+function cb_last() {
+  rn_disconnect();
+  history.go(-1);
 }
 
 function cb_set_play_flg(f) {
@@ -142,7 +148,11 @@ function cb_play_onclick() {
 }
 
 function cb_connect_onclick() {
-  rn_connect();
+  if (gcb_connect_flg) {
+    rn_disconnect();
+  } else {
+    rn_connect();
+  }
 }
 
 function cb_mute_onclick() {
@@ -172,7 +182,14 @@ function cb_media_play() {
 }
 
 
+function cb_ok(url) {
+  history.go(-1);
+  //window.location.href = url;
+}
+
+
 /*-----cookbook-------------------------------------------------------------------------------------------*/
+
 
 var gcb_cmds = [
 {"cmd": ">set_c 0,2,s,140,1;", "swiper_index": 1, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
@@ -194,8 +211,8 @@ var gcb_cmds = [
 {"cmd": ">run_c;", "swiper_index": 13, "start_js": "", "end_js": ""}
 ];
 
-
 /*
+
 var gcb_cmds = [
 {"cmd": ">set_c 0,2,s,45,1;", "swiper_index": 1, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
 {"cmd": ">set_c 1,3,n,45,18;", "swiper_index": 2, "start_js": "gcb_media.pause()", "end_js": ""},
@@ -262,9 +279,11 @@ function cb_showerr(s, lv) {
   alert(s);
 }
 
-//var cb_statusText = document.querySelector('#statusText');
+var cb_statusText = document.querySelector('#statusText');
 function cb_showinfo(s, lv) {
-//  cb_statusText.textContent = s;
+  if (lv == 0) {
+    cb_statusText.textContent = s;
+  }
 }
 
 function cb_next() {
@@ -287,6 +306,7 @@ function cb_end() {
     //cb_lockSwipes();
     rn_run_n();
   } else {
+    rn_disconnect();
     cb_slideNext();
   }
 

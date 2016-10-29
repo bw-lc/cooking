@@ -21,6 +21,10 @@
         <td><button onclick=connect(); >连接</button></td>
       </tr>
       <tr>
+        <td>断开</td>
+        <td><button onclick=disconnect(); >断开</button></td>
+      </tr>
+      <tr>
         <td>命令序号</td>
         <td><input type="text" name="in_index" id="in_index" value="0" readonly="readonly" /></td>
       </tr>
@@ -74,6 +78,10 @@
       <tr>
         <td><button onclick=pause(1); >暂停</button></td>
         <td><button onclick=pause(0); >继续</button></td>
+      </tr>
+      <tr>
+        <td><button onclick=alert(document.URL); >test1</button></td>
+        <td><button onclick="javascript:history.go(-1);">后退</button></td>
       </tr>
     </table>
 

@@ -8,22 +8,22 @@
   <body>
     <table>
       <tr><td><font size="5">命令测试</font></td></tr>
+    </table>
     <table>
-    <table>
-      <div id="statusText">欢迎</></div>
-    <table>
+      <td><div id="statusText">欢迎</div></td>
+    </table>
     <table border="1">
       <tr>
         <td>连接</td>
         <td><button onclick=connect(); >连接</button></td>
         <td>断开</td>
-        <td><button onclick=disconnect(); >断开(*)</button></td>
+        <td><button onclick=disconnect(); >断开</button></td>
       </tr>
       <tr>
         <td>当前温度</td>
-        <td><button onclick=send_str("&gt;get_t\;"); >当前温度</button></td>
+        <td><button onclick=get_t(); >当前温度</button></td>
         <td>当前功率</td>
-        <td><button onclick=send_str("&gt;get_p\;"); >当前功率</button></td>
+        <td><button onclick=get_p(); >当前功率</button></td>
       </tr>
       <tr>
         <td>命令</td>
@@ -50,10 +50,11 @@
         <td><button onclick=run_to(); >加热到</button></td>
       </tr>
 
-    </table>
+      <tr>
+        <td>页面</td>
+        <td><button onclick="javascript:history.go(-1);" >后退</button></td>
+      </tr>
 
-    <table>
-      <font size = "3" color = "blue"> 版权所有 @</font>
     </table>
     <script src="app.js"></script>
   </body>

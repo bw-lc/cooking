@@ -132,7 +132,7 @@
 
 			<div class="weui_opr_area">
 			    <p class="weui_btn_area">
-	        <a class="weui_btn weui_btn_primary" href="./cookbook.html" id="showTooltips" style="background-color: #08607F;">开始做菜</a>
+	        <a class="weui_btn weui_btn_primary" href="javascript:js_href('./cookbook.html');" id="showTooltips" style="background-color: #08607F;">开始做菜</a>
 
 			    </p>
 			</div>
@@ -160,8 +160,23 @@
 		  </div>
 		  <a class="weui_panel_ft" href="javascript:void(0);">查看更多</a>
 		</div>
-
 	</div>
-
 </body>
+<script>
+	function js_href (url) {
+    var access_id;
+    try {
+      access_id = parseInt(localStorage.getItem("access_id"));
+    }
+    catch(err) {
+      access_id = 0;
+    }
+    if (isNaN(access_id)) {
+      access_id = 0;
+    }
+    access_id = access_id + 1;
+    localStorage.setItem("access_id", access_id);
+    window.location.href = url + "?access_id=" + access_id.toString();
+	}
+</script>
 </html>

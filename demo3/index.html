@@ -30,7 +30,7 @@
 		<div class="weui_panel weui_panel_access">
 		  <div class="weui_panel_hd">热门推荐</div>
 		  <div class="weui_panel_bd">
-		    <a href="c1/cooking.html" class="weui_media_box weui_media_appmsg">
+		    <a href="javascript:js_href('c1/cooking.html');" class="weui_media_box weui_media_appmsg">
 		      <div class="weui_media_hd">
 		        <img class="weui_media_appmsg_thumb" src="./img/img.png" alt="">
 		      </div>
@@ -39,7 +39,7 @@
 		        <p class="weui_media_desc">这道菜精华在于蒜末金黄、突出蒜香，排骨要炸焦熟。小火炸避免炸糊。</p>
 		      </div>
 		    </a>
-		    <a href="mytest/index.html" class="weui_media_box weui_media_appmsg">
+		    <a href="javascript:js_href('mytest/index.html');" class="weui_media_box weui_media_appmsg">
 		      <div class="weui_media_hd">
 		        <img class="weui_media_appmsg_thumb" src="./img/2.jpg" alt="">
 		      </div>
@@ -54,16 +54,22 @@
 
 	</div>
 
-
 	<script>
-	var shop=(function(){
-	    var swiper = new Swiper('.swiper-container', {
-	        pagination: '.swiper-pagination',
-	        paginationClickable: true,
-	        loop: true,
-	        autoplay: 2000
-	    });
-	})();
+	function js_href (url){
+    var access_id;
+    try {
+      access_id = parseInt(localStorage.getItem("access_id"));
+    }
+    catch(err) {
+      access_id = 0;
+    }
+    if (isNaN(access_id)) {
+      access_id = 0;
+    }
+    access_id = access_id + 1;
+    localStorage.setItem("access_id", access_id);
+    window.location.href = url + "?access_id=" + access_id.toString();
+	}
 	</script>
 
 </html>
