@@ -1,58 +1,69 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>命令测试</title>
-  </head>
-  <body>
-    <table>
-      <tr><td><font size="5">命令测试</font></td></tr>
-    </table>
-    <table>
-      <td><div id="statusText">欢迎</div></td>
-    </table>
-    <table border="1">
-      <tr>
-        <td>连接</td>
-        <td><button onclick=connect(); >连接</button></td>
-        <td>断开</td>
-        <td><button onclick=disconnect(); >断开</button></td>
-      </tr>
-      <tr>
-        <td>当前温度</td>
-        <td><button onclick=get_t(); >当前温度</button></td>
-        <td>当前功率</td>
-        <td><button onclick=get_p(); >当前功率</button></td>
-      </tr>
-      <tr>
-        <td>命令</td>
-        <td>功率,温度</td>
-        <td>时间</td>
-        <td>执行</td>
-      </tr>
-      <tr>
-        <td>恒定功率</td>
-        <td><input type="text" name="int11" id="int11" value="600" size=5 /></td>
-        <td><input type="text" name="int12" id="int12" value="120" size=5 /></td>
-        <td><button onclick=run_p(); >恒定功率</button></td>
-      </tr>
-      <tr>
-        <td>恒定温度</td>
-        <td><input type="text" name="int21" id="int21" value="100" size=5 /></td>
-        <td><input type="text" name="int22" id="int22" value="180" size=5 /></td>
-        <td><button onclick=run_at(); >恒定温度</button></td>
-      </tr>
-      <tr>
-        <td>加热到</td>
-        <td><input type="text" name="int31" id="int31" value="100" size=5 /></td>
-        <td><input type="text" name="int32" id="int32" value="1" size=5 /></td>
-        <td><button onclick=run_to(); >加热到</button></td>
-      </tr>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<title>慧做饭</title>
+	<link rel="stylesheet" href="./css/weui.min.css"/>
+    <link rel="stylesheet" href="./css/jquery-weui.min.css">
+    <link rel="stylesheet" href="https://weui.io/example.css">
 
-    </table>
+    <script src="./js/jquery-2.1.4.js"></script>
+	<script src="./js/jquery-weui.min.js"></script>
 
-    <script src="/cordova.js"></script>
-    <script src="app.js"></script>
-  </body>
+	<script src="./js/swiper.min.js"></script>
+
+	<style type="text/css">
+		.hd-nav{height:3.6rem;line-height:1.5rem;background-color:#fff;padding:0.3rem 0;}
+		.hd-nav ul{width:100%;}
+		.hd-nav ul li:nth-child(5n+1){margin-left:3.91%;}
+		.hd-nav ul li:nth-child(5n+5){width:25.41%;}
+		.hd-nav ul li{display: inline-block;width:16.6%;font-size:0.7rem;float: left;text-align: center;box-sizing:content-box;}
+		.hd-nav ul li a{color:#464646;display:inline-block;width:100%;height:100%;}
+		.hd-nav ul li:active a{color:#ff8f5c;}
+
+	</style>
+</head>
+
+<body ontouchstart>
+  
+		<div class="weui_panel weui_panel_access">
+		  <div class="weui_panel_hd">热门推荐</div>
+		  <div class="weui_panel_bd">
+		    <a href="c1/cooking.html" class="weui_media_box weui_media_appmsg">
+		      <div class="weui_media_hd">
+		        <img class="weui_media_appmsg_thumb" src="./img/img.png" alt="">
+		      </div>
+		      <div class="weui_media_bd">
+		        <h4 class="weui_media_title">金牌蒜香排骨</h4>
+		        <p class="weui_media_desc">这道菜精华在于蒜末金黄、突出蒜香，排骨要炸焦熟。小火炸避免炸糊。</p>
+		      </div>
+		    </a>
+		    <a href="mytest/index.html" class="weui_media_box weui_media_appmsg">
+		      <div class="weui_media_hd">
+		        <img class="weui_media_appmsg_thumb" src="./img/2.jpg" alt="">
+		      </div>
+		      <div class="weui_media_bd">
+		        <h4 class="weui_media_title">食谱测试</h4>
+		        <p class="weui_media_desc">一些内部测试网页</p>
+		      </div>
+		    </a>
+		  </div>
+		  <a class="weui_panel_ft" href="javascript:void(0);">查看更多</a>
+		</div>
+
+	</div>
+
+
+	<script>
+	var shop=(function(){
+	    var swiper = new Swiper('.swiper-container', {
+	        pagination: '.swiper-pagination',
+	        paginationClickable: true,
+	        loop: true,
+	        autoplay: 2000
+	    });
+	})();
+	</script>
+
 </html>
