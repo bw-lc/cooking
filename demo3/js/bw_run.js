@@ -1,4 +1,6 @@
 document.write("<script language=javascript src='/cordova.js'></script>");
+require("cordova!de.appplant.cordova.plugin.background-mode");
+require("cordova!de.appplant.cordova.plugin.badge");
 require("cordova!cordova-plugin-ble-central");
 //var ble = window.ble;
 
@@ -64,6 +66,7 @@ function rn_conned(info) {
   grn_finding = -1;
   cb_showinfo("已连接...", 0);
   cb_set_connect_flg(true);
+  cordova.plugins.backgroundMode.enable();
   grn_device_char  = info.characteristics;
   ble.startNotification(grn_device_id, "ffe0", "ffe4", rn_char_onData, rn_errCallBack);
 }
@@ -141,6 +144,7 @@ function rn_disconnect() {
   cb_set_connect_flg(false);
   grn_device_id = false;
   grn_device_char = false;
+  cordova.plugins.backgroundMode.disable();
 }
 
 function __rn_send_str2(s) {
