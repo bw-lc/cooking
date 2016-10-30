@@ -4,6 +4,9 @@ require("cordova!de.appplant.cordova.plugin.badge");
 require("cordova!cordova-plugin-ble-central");
 //var ble = window.ble;
 
+cordova.plugins.backgroundMode.setDefaults({ text:'Doing heavy tasks.'});
+
+
 var grn_device_id = false;
 var grn_device_char = false;
 
