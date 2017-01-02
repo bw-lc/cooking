@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>金牌蒜香排</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="../../css/swiper.min.css">
+    <link rel="stylesheet" href="../../css/weui.min.css"/>
+
+
+    <!-- Demo styles -->
+    <style>
+      html, body {
+        position: relative;
+        height: 100%;
+      }
+      body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+      }
+      .swiper-container {
+        width: 100%;
+        height: 100%;
+      }
+      .swiper-slide {
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <script src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=409185"></script><link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style0_24.css">
+  <body>
+    <audio id="media" src="../music/prompt.wav" loop="loop">您的浏览器不支持 audio 标签。</audio>
+    <audio id="media_end" src="../music/end.mp3">您的浏览器不支持 audio 标签。</audio>
+    <div id="statusText"></div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div  style="background-color:#E64A19; width: 100%;">
+            <div>
+              <ul style="list-style: none; position: relative; line-height: 0; padding-left: 10px; padding: 10px 10px;">
+                <li style="width: 20%;display: inline-block; margin-left: 5px;">
+                  <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat -64px 0px;" class="connect"></div>
+                </li>
+                <li style="width: 10%; line-height: 32px; display: inline-block; color:#fff; font-size: 20px; position: absolute;">
+                  <div class="cb_temperature" >60°</div>
+                </li>
+                <li style="width: 10%; line-height: 32px; display: inline-block; margin-left: 50px; color:#fff;font-size: 20px; position: absolute;">
+                  <div class="cb_time">0:00:00</div>
+                </li>
+                <li style="width: 10%;  display: inline-block; margin-left:45%;">
+                  <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat 0px 0px;" class="mute"></div>
+                </li>
+                <li style="width: 10%;display: inline-block; margin-left:10%;">
+                  <div style="height: 32px;width:32px; background: url(../img/my211.png) no-repeat -128px 0px;" class="play"></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="weui_cells" style=" margin-top: 0px;//border: 1px solid #E64A19; //border-radius: 5px;margin-bottom:0px;"></div>
+          <div class="container" id="container">
+            <img src="./img/20160829100748.png" style="width:100%;height: 240px;" />
+            <ul style="list-style:none;margin-left: 20px;margin-right: 20px;margin-top: 10px; display:inline-block;">
+              <li>1.葱洗净切段，姜切丝</li>
+              <li>2.大蒜去皮洗净剁碎</li>
+              <li>3.排骨化冻切成寸段，洗净控干放盆。</li>
+              <li>4.加入生抽，料酒，盐，味精，白糖，胡椒粉，切好的葱姜。</li>
+              <li>5.抓匀腌30分钟。颜色不要太深，盐味不要太重。</li>
+            </ul>
+            <button onclick=cb_start(); class="weui_btn weui_btn_plain_primary" style="margin-top: 20px;background-color: #08607F;color:#fff;border:none; position:absolute; bottom:50px;left:5%; width:90%;">准备完毕，开始做菜</button>
+            <div class="b" style="margin-top: 30px;"></div>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="weui_cells" style=" margin-top: 0px;//border: 1px solid #E64A19; //border-radius: 5px;margin-bottom:0px;">
+            <div  style="background-color:#E64A19; width: 100%;">
+              <div>
+                <ul style="list-style: none; position: relative; line-height: 0; padding-left: 10px; padding: 10px 10px;">
+                  <li style="width: 20%;display: inline-block; margin-left: 5px;">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat -64px 0px;" class="connect"></div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; color:#fff; font-size: 20px; position: absolute;">
+                    <div class="cb_temperature" >60°</div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; margin-left: 50px; color:#fff;font-size: 20px; position: absolute;">
+                    <div class="cb_time">0:00:00</div>
+                  </li>
+                  <li style="width: 10%;  display: inline-block; margin-left:45%; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat 0px 0px;" class="mute"></div>
+                  </li>
+                  <li style="width: 10%;display: inline-block; margin-left:10%; ">
+                    <div style="height: 32px;width:32px; background: url(../img/my211.png) no-repeat -128px 0px;" class="play"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="./img/20160901164649.png" style="width:100%;height: 240px;" />
+            <ul style="list-style:none; margin-left: 20px;margin-right: 20px;margin-top: 10px; display:inline-block;">
+              <li>1.智控锅内放适量色拉油</li>
+              <li>2.准备好放入蒜末</li>
+              <li>3.等待音乐响起</li>
+              <li>4.点击"下一步"</li>
+            </ul>
+            <button onclick=cb_next(); class="weui_btn weui_btn_plain_primary" style="margin-top: 20px;background-color: #08607F;color:#fff;border:none; position:absolute; bottom:50px;left:5%; width:90%;">下一步</button>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="weui_cells" style=" margin-top: 0px;//border: 1px solid #E64A19; //border-radius: 5px;margin-bottom:0px;">
+            <div  style="background-color:#E64A19; width: 100%;">
+              <div>
+                <ul style="list-style: none; position: relative; line-height: 0; padding-left: 10px; padding: 10px 10px;">
+                  <li style="width: 20%;display: inline-block; margin-left: 5px; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat -64px 0px;" class="connect"></div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; color:#fff; font-size: 20px; position: absolute;">
+                    <div class="cb_temperature" >60°</div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; margin-left: 50px; color:#fff;font-size: 20px; position: absolute;">
+                    <div class="cb_time">0:00:00</div>
+                  </li>
+                  <li style="width: 10%;  display: inline-block; margin-left:45%; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat 0px 0px;" class="mute"></div>
+                  </li>
+                  <li style="width: 10%;display: inline-block; margin-left:10%; ">
+                    <div style="height: 32px;width:32px; background: url(../img/my211.png) no-repeat -128px 0px;" class="play"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="./img/20160901164715.png" style="width:100%;height: 240px;" />
+            <ul  style="list-style:none; margin-left: 20px;margin-right: 20px;margin-top: 10px; display:inline-block;">
+              <li>1.放入蒜末，煸炒直到音乐响起</li>
+              <li>2.捞起蒜末</li>
+              <li>3.点击"下一步"</li>
+            </ul>
+            <button onclick=cb_next(); class="weui_btn weui_btn_plain_primary" style="margin-top: 20px;background-color: #08607F;color:#fff;border:none; position:absolute; bottom:50px;left:5%; width:90%;">下一步</button>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="weui_cells" style=" margin-top: 0px;//border: 1px solid #E64A19; //border-radius: 5px;margin-bottom:0px;">
+            <div  style="background-color:#E64A19; width: 100%;">
+              <div>
+                <ul style="list-style: none; position: relative; line-height: 0; padding-left: 10px; padding: 10px 10px;">
+                  <li style="width: 20%;display: inline-block; margin-left: 5px; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat -64px 0px;" class="connect"></div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; color:#fff; font-size: 20px; position: absolute;">
+                    <div class="cb_temperature" >60°</div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; margin-left: 50px; color:#fff;font-size: 20px; position: absolute;">
+                    <div class="cb_time">0:00:00</div>
+                  </li>
+                  <li style="width: 10%;  display: inline-block; margin-left:45%; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat 0px 0px;" class="mute"></div>
+                  </li>
+                  <li style="width: 10%;display: inline-block; margin-left:10%; ">
+                    <div style="height: 32px;width:32px; background: url(../img/my211.png) no-repeat -128px 0px;" class="play"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="./img/20160901164715.png" style="width:100%;height: 240px;" />
+            <ul  style="list-style:none; margin-left: 20px;margin-right: 20px;margin-top: 10px; display:inline-block;">
+              <li>1.捞起蒜末</li>
+              <li>2.点击"下一步"</li>
+            </ul>
+            <button onclick=cb_next(); class="weui_btn weui_btn_plain_primary" style="margin-top: 20px;background-color: #08607F;color:#fff;border:none; position:absolute; bottom:50px;left:5%; width:90%;">下一步</button>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="weui_cells" style=" margin-top: 0px;//border: 1px solid #E64A19; //border-radius: 5px;margin-bottom:0px;">
+            <div style="background-color:#E64A19; width: 100%;">
+              <div>
+                <ul style="list-style: none; position: relative; line-height: 0; padding-left: 10px; padding: 10px 10px;">
+                  <li style="width: 20%;display: inline-block; margin-left: 5px; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat -64px 0px;" class="connect"></div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; color:#fff; font-size: 20px; position: absolute;">
+                    <div class="cb_temperature" >60°</div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; margin-left: 50px; color:#fff;font-size: 20px; position: absolute;">
+                    <div class="cb_time">0:00:00</div>
+                  </li>
+                  <li style="width: 10%; display: inline-block; margin-left:45%; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat 0px 0px;" class="mute"></div>
+                  </li>
+                  <li style="width: 10%;display: inline-block; margin-left:10%; ">
+                    <div style="height: 32px;width:32px; background: url(../img/my211.png) no-repeat -128px 0px;" class="play"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="./img/20160901164649.png" style="width:100%;height: 240px;" />
+            <ul  style="list-style:none; margin-left: 20px;margin-right: 20px;margin-top: 10px; display:inline-block;">
+              <li>1.准备腌好的排骨，等会裹面油炸</li>
+              <li>2.等待音乐响起</li>
+              <li>3.点击"下一步"</li>
+            </ul>
+            <button onclick=cb_next(); class="weui_btn weui_btn_plain_primary" style="margin-top: 20px;background-color: #08607F;color:#fff;border:none; position:absolute; bottom:50px;left:5%; width:90%;">下一步</button>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="weui_cells" style=" margin-top: 0px;//border: 1px solid #E64A19; //border-radius: 5px;margin-bottom:0px;">
+            <div style="background-color:#E64A19; width: 100%;">
+              <div>
+                <ul style="list-style: none; position: relative; line-height: 0; padding-left: 10px; padding: 10px 10px;">
+                  <li style="width: 20%;display: inline-block; margin-left: 5px; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat -64px 0px;" class="connect"></div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; color:#fff; font-size: 20px; position: absolute;">
+                    <div class="cb_temperature" >60°</div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; margin-left: 50px; color:#fff;font-size: 20px; position: absolute;">
+                    <div class="cb_time">0:00:00</div>
+                  </li>
+                  <li style="width: 10%; display: inline-block; margin-left:45%; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat 0px 0px;" class="mute"></div>
+                  </li>
+                  <li style="width: 10%;display: inline-block; margin-left:10%; ">
+                    <div style="height: 32px;width:32px; background: url(../img/my211.png) no-repeat -128px 0px;" class="play"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="./img/20160901164724.png" style="width:100%;height: 240px;" />
+            <ul style="list-style:none; margin-left: 20px;margin-right: 20px;margin-top: 10px; display:inline-block;">
+              <li>1.腌好的排骨裹面，放入锅中油炸，直到音乐响起</li>
+              <li>2.捞起排骨</li>
+              <li>3.点击"下一步"</li> 
+            </ul>
+            <button onclick=cb_next(); class="weui_btn weui_btn_plain_primary" style="margin-top: 20px;background-color: #08607F;color:#fff;border:none; position:absolute; bottom:50px;left:5%; width:90%;">下一步</button>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="weui_cells" style=" margin-top: 0px;//border: 1px solid #E64A19; //border-radius: 5px;margin-bottom:0px;">
+            <div style="background-color:#E64A19; width: 100%;">
+              <div>
+                <ul style="list-style: none; position: relative; line-height: 0; padding-left: 10px; padding: 10px 10px;">
+                  <li style="width: 20%;display: inline-block; margin-left: 5px; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat -64px 0px;" class="connect"></div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; color:#fff; font-size: 20px; position: absolute;">
+                    <div class="cb_temperature" >60°</div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; margin-left: 50px; color:#fff;font-size: 20px; position: absolute;">
+                    <div class="cb_time">0:00:00</div>
+                  </li>
+                  <li style="width: 10%; display: inline-block; margin-left:45%; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat 0px 0px;" class="mute"></div>
+                  </li>
+                  <li style="width: 10%;display: inline-block; margin-left:10%; ">
+                    <div style="height: 32px;width:32px; background: url(../img/my211.png) no-repeat -128px 0px;" class="play"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="./img/20160901164724.png" style="width:100%;height: 240px;" />
+            <ul style="list-style:none; margin-left: 20px;margin-right: 20px;margin-top: 10px; display:inline-block;">
+              <li>1.捞起排骨</li>
+              <li>2.点击"下一步"</li> 
+            </ul>
+            <button onclick=cb_next(); class="weui_btn weui_btn_plain_primary" style="margin-top: 20px;background-color: #08607F;color:#fff;border:none; position:absolute; bottom:50px;left:5%; width:90%;">下一步</button>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="weui_cells" style=" margin-top: 0px;//border: 1px solid #E64A19; //border-radius: 5px;margin-bottom:0px;">
+            <div style="background-color:#E64A19; width: 100%;">
+              <div>
+                <ul style="list-style: none; position: relative; line-height: 0; padding-left: 10px; padding: 10px 10px;">
+                  <li style="width: 20%;display: inline-block; margin-left: 5px; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat -64px 0px;" class="connect"></div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; color:#fff; font-size: 20px; position: absolute;">
+                    <div class="cb_temperature" >60°</div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; margin-left: 50px; color:#fff;font-size: 20px; position: absolute;">
+                    <div class="cb_time">0:00:00</div>
+                  </li>
+                  <li style="width: 10%; display: inline-block; margin-left:45%; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat 0px 0px;" class="mute"></div>
+                  </li>
+                  <li style="width: 10%; display: inline-block; margin-left:10%; ">
+                    <div style="height: 32px;width:32px; background: url(../img/my211.png) no-repeat -128px 0px;" class="play"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="./img/20160901164649.png" style="width:100%;height: 240px;" />
+            <ul  style="list-style:none; margin-left: 20px;margin-right: 20px;margin-top: 10px; display:inline-block;">
+              <li>1.准备捞起的排骨，等会继续油炸</li>
+              <li>2.等待音乐响起</li>
+              <li>3.点击"下一步"</li>
+            </ul>
+            <button onclick=cb_next(); class="weui_btn weui_btn_plain_primary" style="margin-top: 20px;background-color: #08607F;color:#fff;border:none; position:absolute; bottom:50px;left:5%; width:90%;">下一步</button>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="weui_cells" style=" margin-top: 0px;//border: 1px solid #E64A19; //border-radius: 5px;margin-bottom:0px;">
+            <div style="background-color:#E64A19; width: 100%;">
+              <div>
+                <ul style="list-style: none; position: relative; line-height: 0; padding-left: 10px; padding: 10px 10px;">
+                  <li style="width: 20%;display: inline-block; margin-left: 5px; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat -64px 0px;" class="connect"></div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; color:#fff; font-size: 20px; position: absolute;">
+                    <div class="cb_temperature" >60°</div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; margin-left: 50px; color:#fff;font-size: 20px; position: absolute;">
+                    <div class="cb_time">0:00:00</div>
+                  </li>
+                  <li style="width: 10%; display: inline-block; margin-left:45%; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat 0px 0px;" class="mute"></div>
+                  </li>
+                  <li style="width: 10%; display: inline-block; margin-left:10%; ">
+                    <div style="height: 32px;width:32px; background: url(../img/my211.png) no-repeat -128px 0px;" class="play"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="./img/20160901164724.png" style="width:100%;height: 240px;" />
+            <ul  style="list-style:none; margin-left: 20px;margin-right: 20px;margin-top: 10px; display:inline-block;">
+              <li>1.放入刚才捞起的排骨，继续油炸，直至音乐响起</li>
+              <li>2.捞起排骨</li>
+              <li>3.把油倒入空碗中，留下少许即可</li>
+              <li>4.点击"下一步"</li>
+            </ul>
+            <button onclick=cb_next(); class="weui_btn weui_btn_plain_primary" style="margin-top: 20px;background-color: #08607F;color:#fff;border:none; position:absolute; bottom:50px;left:5%; width:90%;">下一步</button>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="weui_cells" style=" margin-top: 0px;//border: 1px solid #E64A19; //border-radius: 5px;margin-bottom:0px;">
+            <div style="background-color:#E64A19; width: 100%;">
+              <div>
+                <ul style="list-style: none; position: relative; line-height: 0; padding-left: 10px; padding: 10px 10px;">
+                  <li style="width: 20%;display: inline-block; margin-left: 5px; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat -64px 0px;" class="connect"></div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; color:#fff; font-size: 20px; position: absolute;">
+                    <div class="cb_temperature" >60°</div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; margin-left: 50px; color:#fff;font-size: 20px; position: absolute;">
+                    <div class="cb_time">0:00:00</div>
+                  </li>
+                  <li style="width: 10%; display: inline-block; margin-left:45%; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat 0px 0px;" class="mute"></div>
+                  </li>
+                  <li style="width: 10%; display: inline-block; margin-left:10%; ">
+                    <div style="height: 32px;width:32px; background: url(../img/my211.png) no-repeat -128px 0px;" class="play"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="./img/20160901164724.png" style="width:100%;height: 240px;" />
+            <ul  style="list-style:none; margin-left: 20px;margin-right: 20px;margin-top: 10px; display:inline-block;">
+              <li>1.捞起排骨</li>
+              <li>2.把油倒入空碗中，留下少许即可</li>
+              <li>3.点击"下一步"</li>
+            </ul>
+            <button onclick=cb_next(); class="weui_btn weui_btn_plain_primary" style="margin-top: 20px;background-color: #08607F;color:#fff;border:none; position:absolute; bottom:50px;left:5%; width:90%;">下一步</button>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="weui_cells" style=" margin-top: 0px;//border: 1px solid #E64A19; //border-radius: 5px;margin-bottom:0px;">
+            <div style="background-color:#E64A19; width: 100%;">
+              <div>
+                <ul style="list-style: none; position: relative; line-height: 0; padding-left: 10px; padding: 10px 10px;">
+                  <li style="width: 20%;display: inline-block; margin-left: 5px; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat -64px 0px;" class="connect"></div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; color:#fff; font-size: 20px; position: absolute;">
+                    <div class="cb_temperature" >60°</div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; margin-left: 50px; color:#fff;font-size: 20px; position: absolute;">
+                    <div class="cb_time">0:00:00</div>
+                  </li>
+                  <li style="width: 10%; display: inline-block; margin-left:45%; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat 0px 0px;" class="mute"></div>
+                  </li>
+                  <li style="width: 10%; display: inline-block; margin-left:10%; ">
+                    <div style="height: 32px;width:32px; background: url(../img/my211.png) no-repeat -128px 0px;" class="play"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="./img/20160901164649.png" style="width:100%;height: 240px;" />
+            <ul  style="list-style:none; margin-left: 20px;margin-right: 20px;margin-top: 10px; display:inline-block;">
+              <li>1.准备捞起的排骨和煸炒过的蒜末，等会翻炒</li>
+              <li>2.等待音乐响起</li>
+              <li>3.点击"下一步"</li>
+            </ul>
+            <button onclick=cb_next(); class="weui_btn weui_btn_plain_primary" style="margin-top: 20px;background-color: #08607F;color:#fff;border:none; position:absolute; bottom:50px;left:5%; width:90%;">下一步</button>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="weui_cells" style=" margin-top: 0px;//border: 1px solid #E64A19; //border-radius: 5px;margin-bottom:0px;">
+            <div style="background-color:#E64A19; width: 100%;">
+              <div>
+                <ul style="list-style: none; position: relative; line-height: 0; padding-left: 10px; padding: 10px 10px;">
+                  <li style="width: 20%;display: inline-block; margin-left: 5px;">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat -64px 0px;" class="connect"></div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; color:#fff; font-size: 20px; position: absolute;">
+                    <div class="cb_temperature" >60°</div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; margin-left: 50px; color:#fff;font-size: 20px; position: absolute;">
+                    <div class="cb_time">0:00:00</div>
+                  </li>
+                  <li style="width: 10%;  display: inline-block; margin-left:45%; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat 0px 0px;" class="mute"></div>
+                  </li>
+                  <li style="width: 10%;display: inline-block; margin-left:10%; ">
+                    <div style="height: 32px;width:32px; background: url(../img/my211.png) no-repeat -128px 0px;" class="play"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="./img/20160901164745.png" style="width:100%;height: 240px;" />
+            <ul  style="list-style:none; margin-left: 20px;margin-right: 20px;margin-top: 10px; display:inline-block;">
+              <li>1.放入刚捞起的排骨和油炸过的蒜末，翻炒，直到音乐响起</li>
+              <li>2.把炒好的排骨装盘</li>
+              <li>3.点击"下一步"</li>
+            </ul>
+            <button onclick=cb_next(); class="weui_btn weui_btn_plain_primary" style="margin-top: 20px;background-color: #08607F;color:#fff;border:none; position:absolute; bottom:50px;left:5%; width:90%;">下一步</button>
+          </div>
+       </div>
+
+        <div class="swiper-slide">
+          <div class="weui_cells" style=" margin-top: 0px;//border: 1px solid #E64A19; //border-radius: 5px;margin-bottom:0px;">
+            <div style="background-color:#E64A19; width: 100%;">
+              <div>
+                <ul style="list-style: none; position: relative; line-height: 0; padding-left: 10px; padding: 10px 10px;">
+                  <li style="width: 20%;display: inline-block; margin-left: 5px;">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat -64px 0px;" class="connect"></div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; color:#fff; font-size: 20px; position: absolute;">
+                    <div class="cb_temperature" >60°</div>
+                  </li>
+                  <li style="width: 10%; line-height: 32px; display: inline-block; margin-left: 50px; color:#fff;font-size: 20px; position: absolute;">
+                    <div class="cb_time">0:00:00</div>
+                  </li>
+                  <li style="width: 10%;  display: inline-block; margin-left:45%; ">
+                    <div style=" height: 32px;width:32px;background: url(../img/my211.png) no-repeat 0px 0px;" class="mute"></div>
+                  </li>
+                  <li style="width: 10%;display: inline-block; margin-left:10%; ">
+                    <div style="height: 32px;width:32px; background: url(../img/my211.png) no-repeat -128px 0px;" class="play"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img src="./img/20160901164745.png" style="width:100%;height: 240px;" />
+            <ul  style="list-style:none; margin-left: 20px;margin-right: 20px;margin-top: 10px; display:inline-block;">
+              <li>1.把炒好的排骨装盘</li>
+              <li>2.点击"完成"</li>
+            </ul>
+            <button onclick=cb_end(); class="weui_btn weui_btn_plain_primary" style="margin-top: 20px;background-color: #08607F;color:#fff;border:none; position:absolute; bottom:50px;left:5%; width:90%;">完成</button>
+          </div>
+       </div>
+
+       <div class="swiper-slide">
+         <div class="weui_msg">
+           <div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg" style="color:#1AAD19;"></i></div>
+             <div class="weui_text_area">
+               <h2 class="weui_msg_title">祝贺你！你已经做完成了金牌蒜香排骨的烹饪，尽情享受美味吧。</h2>
+               <p class="weui_msg_desc"></p>
+             </div>
+             <div class="weui_opr_area">
+               <p class="weui_btn_area">
+                 <button onclick=cb_ok('../../index.html'); class="weui_btn weui_btn_primary">确定</button>
+               </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="../js/demo.js"></script>
+  
+    <!-- Initialize Swiper -->
+    <script>
+
+
+    </script>
+
+    <script src="cookbook.js"></script>
+    <script src="../js/bw_run.js"></script>
+  </body>
+</html>
