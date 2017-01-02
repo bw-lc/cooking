@@ -211,3 +211,9 @@ function rn_pause(f) {
 function rn_run_n() {
   rn_send_str(">run_n;");
 }
+
+function rn_leave() {
+  rn_send_str(">bmute;");
+  setTimeout("rn_disconnect();", 100);
+  setTimeout("history.go(-1);", 300);
+}

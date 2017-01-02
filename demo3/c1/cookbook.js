@@ -183,7 +183,7 @@ function cb_media_play() {
 
 
 function cb_ok(url) {
-  history.go(-1);
+  rn_leave();
   //window.location.href = url;
 }
 
