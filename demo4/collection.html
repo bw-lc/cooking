@@ -4,7 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
         <title>收藏夹</title>
-        <link rel="stylesheet" href="css/weui.min.css"/>
+        <link rel="stylesheet" href="./css/weui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="./css/menu.css" media="all">
         <style>
       /* delete button */
 
@@ -163,33 +164,62 @@
 
 		</div>
 
-		<div class="weui_tabbar" style="position: fixed; bottom: 0">
-		    <a href="javascript:;" class="weui_tabbar_item weui_bar_item_on">
-		      <div class="weui_tabbar_icon">
-		        <img src="img/food.png" alt="">
-		      </div>
-		      <p class="weui_tabbar_label">慧做饭</p>
-		    </a>
-		    <a href="javascript:;" class="weui_tabbar_item">
-		      <div class="weui_tabbar_icon">
-		        <img src="img/paihang.png" alt="">
-		      </div>
-		      <p class="weui_tabbar_label">排行榜</p>
-		    </a>
-		    <a href="javascript:;" class="weui_tabbar_item">
-		      <div class="weui_tabbar_icon">
-		        <img src="img/fenlei.png" alt="">
-		      </div>
-		      <p class="weui_tabbar_label">菜谱分类</p>
-		    </a>
-		    <a href="javascript:;" class="weui_tabbar_item">
-		      <div class="weui_tabbar_icon">
-		        <img src="img/user.png" alt="">
-		      </div>
-		      <p class="weui_tabbar_label">我</p>
-		    </a>
-		  </div>
+		
+
+		<div class="nav4">
+
+			<nav>
+				<div id="nav4_ul" class="nav_4">
+					<ul class="box">
+						<li style="padding:0px;">
+							<a href="javascript:;" class=""><span>慧做饭</span></a>
+							<dl>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+							</dl>
+						</li>
+						<li style="padding:0px;">
+							<a href="javascript:;" class=""><span>排行榜</span></a>
+							<dl>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+							</dl>
+						</li>
+						<li style="padding:0px;">
+							<a href="javascript:;" class=""><span>菜谱分类</span></a>
+							<dl>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+							</dl>
+						</li>
+						<li style="padding:0px;">
+							<a href="javascript:;" class="on"><span>我</span></a>
+							<dl>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+							</dl>
+						</li>
+					
+					</ul>
+				</div>
+			</nav>
+			
+			<div id="nav4_masklayer" class="masklayer_div on">&nbsp;</div>
+
 		</div>
+
+		<script src="./js/nav4.js"></script>
+		<script type="text/javascript">
+		nav4.bindClick(document.getElementById("nav4_ul").querySelectorAll("li>a"), document.getElementById("nav4_masklayer"));
+		</script>	
 
 
 

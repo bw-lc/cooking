@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
         <title>收藏</title>
         <link rel="stylesheet" href="css/weui.min.css"/>
+        <link rel="stylesheet" type="text/css" href="./css/menu.css" media="all">
     </head>
     <body>
 
@@ -83,6 +84,61 @@
 
 		  <a class="weui_panel_ft" href="javascript:void(0);">查看更多</a>
 		</div>
+
+		<div class="nav4">
+
+			<nav>
+				<div id="nav4_ul" class="nav_4">
+					<ul class="box">
+						<li style="padding:0px;">
+							<a href="javascript:;" class=""><span>慧做饭</span></a>
+							<dl>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+							</dl>
+						</li>
+						<li style="padding:0px;">
+							<a href="javascript:;" class=""><span>排行榜</span></a>
+							<dl>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+							</dl>
+						</li>
+						<li style="padding:0px;">
+							<a href="javascript:;" class=""><span>菜谱分类</span></a>
+							<dl>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+							</dl>
+						</li>
+						<li style="padding:0px;">
+							<a href="javascript:;" class="on"><span>我</span></a>
+							<dl>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+								<dd><a href="#"><span>子菜单</span></a></dd>
+							</dl>
+						</li>
+					
+					</ul>
+				</div>
+			</nav>
+			
+			<div id="nav4_masklayer" class="masklayer_div on">&nbsp;</div>
+
+		</div>
+
+		<script src="./js/nav4.js"></script>
+		<script type="text/javascript">
+		nav4.bindClick(document.getElementById("nav4_ul").querySelectorAll("li>a"), document.getElementById("nav4_masklayer"));
+		</script>	
 
     </body>
 </html>
