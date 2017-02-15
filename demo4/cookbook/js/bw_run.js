@@ -220,6 +220,5 @@ function rn_leave() {
 
 function rn_break() {
   rn_send_str("rn_run_o();");
-  setTimeout("rn_run_o();", 2000);
   setTimeout("rn_leave();", 2200);
 }
