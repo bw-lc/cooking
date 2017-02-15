@@ -41,7 +41,7 @@ function __cb_onInit(swiper) {
   __play.onclick = cb_play_onclick;
   __connect.onclick = cb_connect_onclick;
   __mute.onclick = cb_mute_onclick;
-  __time.onclick = cb_last;
+  //__time.onclick = cb_last;
 }  
 
 function cb_onInit(swiper) {
