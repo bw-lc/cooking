@@ -64,10 +64,10 @@ function cb_onSlideChangeStart(swiper) {
   }
 }
 
-function cb_last() {
+/*function cb_last() {
   rn_disconnect();
   history.go(-1);
-}
+}*/
 
 function cb_set_play_flg(f) {
   var index = gcb_swiper.activeIndex;

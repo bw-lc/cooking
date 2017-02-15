@@ -217,3 +217,14 @@ function rn_leave() {
   setTimeout("rn_disconnect();", 100);
   setTimeout("history.go(-1);", 300);
 }
+
+function rn_run_o() {
+  rn_send_str(">run_o 0,1;");
+}
+
+function rn_break() {
+  rn_send_str(">bmute;");
+  setTimeout("rn_run_o();", 100);
+  setTimeout("rn_disconnect();", 300);
+  setTimeout("history.go(-1);", 500);
+}
