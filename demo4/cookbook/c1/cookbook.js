@@ -279,6 +279,7 @@ function cb_showerr(s, lv) {
   alert(s);
 }
 
+/*
 //var cb_statusText = document.getElementById('statusText');
 function cb_showinfo(str, lv, ms) {
   var cb_statusText = document.getElementById('statusText');
@@ -287,14 +288,19 @@ function cb_showinfo(str, lv, ms) {
     setTimeout("document.getElementById('statusText').style.display = 'none';", ms);
   }
 }
+*/
 
-/*var cb_statusText = document.querySelector('#statusText');
+var cb_statusText = document.querySelector('#statusText');
 function cb_showinfo(str, lv, ms) {
   if (lv == 0) {
-    cb_statusText.textContent = s;
+    if(str !== 'undefined') {
+        //cb_statusText.textContent = s;
+        cb_statusText.innerHTML = str;
+        setTimeout("cb_statusText.innerHTML =''", ms);
+    }
   }
 }
-*/
+
 
 function cb_next() {
   
