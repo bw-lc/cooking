@@ -285,6 +285,7 @@ function cb_showinfo(str, lv, ms) {
   if(str !== 'undefined') {
     cb_statusText.innerHTML = str;
     setTimeout("document.getElementById('statusText').style.display = 'none';", ms);
+  }
 }
 
 /*var cb_statusText = document.querySelector('#statusText');
