@@ -16,11 +16,11 @@ var grn_old_runing;
 var grn_show_flg;
 
 function rn_suCallBack(info) {
-  cb_showinfo("成功：" + JSON.stringify(info), 1);
+  cb_showinfo("成功：" + JSON.stringify(info), 1, 3000);
 }
 
 function rn_errCallBack(info) {
-  cb_showinfo("失败：" + JSON.stringify(info), 1);
+  cb_showinfo("失败：" + JSON.stringify(info), 1, 3000);
 }
 
 function rn_suCallBack2(info) {
@@ -33,11 +33,11 @@ var grn_finding;
 function rn_finding() {
   grn_finding = grn_finding - 1;
   if (grn_finding > 0) {
-    cb_showinfo("正在查找设备，剩余" + grn_finding + "秒...", 0);
+    cb_showinfo("正在查找设备，剩余" + grn_finding + "秒...", 0, 1000);
     setTimeout("rn_finding();", 1000);
   } else {
     if (grn_device_id == false) {
-      cb_showinfo("未找到设备。", 0);
+      cb_showinfo("未找到设备。", 0, 5000);
     }
   }
 }
@@ -45,7 +45,7 @@ function rn_finding() {
 function rn_connect() {
   grn_device_id = false;
   grn_device_char = false;
-  cb_showinfo("正在查找设备，剩余15秒...", 0);
+  cb_showinfo("正在查找设备，剩余15秒...", 0, 1000);
   grn_finding = 15;
   ble.scan([], 15, rn_find_ble, rn_errCallBack);
   setTimeout("rn_finding();", 1000);
@@ -53,7 +53,7 @@ function rn_connect() {
 }
 
 function rn_find_ble(info) {
-  cb_showinfo("连接...", 0);
+  cb_showinfo("连接...", 0, 1000);
   dname = info.name;
   rssi = parseInt(info.rssi);
   if (dname.search("bwdcl-") == 0) { // && rssi > -75) {
@@ -61,13 +61,13 @@ function rn_find_ble(info) {
     ble.stopScan( rn_suCallBack2, rn_errCallBack2);
     ble.connect(grn_device_id, rn_conned, rn_errCallBack);
   } else {
-    cb_showinfo(JSON.stringify(info), 0);
+    cb_showinfo(JSON.stringify(info), 0, 5000);
   }
 }
 
 function rn_conned(info) {
   grn_finding = -1;
-  cb_showinfo("已连接...", 0);
+  cb_showinfo("已连接...", 0, 3000);
   cb_set_connect_flg(true);
   cordova.plugins.backgroundMode.enable();
   grn_device_char  = info.characteristics;
@@ -88,16 +88,16 @@ function rn_char_onData(buffer) {
     } else if (s == ">OK;") {
       if (!rn_send_cmd()) {
         if (grn_show_flg) {
-          cb_showinfo("执行无误", 0);
+          cb_showinfo("执行无误", 0, 1000);
         } else {
           grn_show_flg = true;
         }
       }
     } else if (s == ">pause 0;") {
-      cb_showinfo("继续执行", 0);
+      cb_showinfo("继续执行", 0, 2000);
       cb_set_play_flg(true);
     } else if (s == ">pause 1;") {
-      cb_showinfo("暂停执行", 0);
+      cb_showinfo("暂停执行", 0, 2000);
       cb_set_play_flg(false);
     } else if (s == ">E1;") {
       cb_showerr("测温模块故障", 0);
@@ -110,20 +110,20 @@ function rn_char_onData(buffer) {
     } else if (s == ">E5;") {
       cb_showerr("没有按照顺序设置食谱", 0);
     } else if (s.substring(0, 6) != ">info "  || s.substring(i - 1, i) != ";") {
-        cb_showinfo(s, 0);
+        cb_showinfo(s, 0, 2000);
     } else {
       
       s2 = s.substring(6, i - 1);
       ss = s2.split(",");
 
       if (ss.length != 3) {
-        cb_showinfo(s, 0);
+        cb_showinfo(s, 0, 2000);
       } else {
         _i = parseInt(ss[0]);
         _s = parseInt(ss[1]);
         _t = parseFloat(ss[2]);
 
-        cb_showinfo(s + " " + _t + " " + _s, 1);
+        cb_showinfo(s + " " + _t + " " + _s, 1, 2000);
         cb_set_run_info(_t, _s);
 
         if (_i < grn_len) {
@@ -143,7 +143,7 @@ function rn_char_onData(buffer) {
 function rn_disconnect() {
   ble.stopNotification(grn_device_id, "ffe0", "ffe4", rn_suCallBack2, rn_errCallBack2);
   ble.disconnect(grn_device_id, rn_suCallBack2, rn_errCallBack2);
-  cb_showinfo("已断开...", 0);
+  cb_showinfo("已断开...", 0, 5000);
   cb_set_connect_flg(false);
   grn_device_id = false;
   grn_device_char = false;
@@ -173,7 +173,7 @@ function __rn_send_str(s) {
 
 function rn_send_str(s) {
   if (grn_device_id != false) {
-    cb_showinfo("正在执行...", 0);
+    cb_showinfo("正在执行...", 0, 1000);
     __rn_send_str(s);
   } else {
     cb_showerr("未连接,发送\"" + s + "\"失败", 0);

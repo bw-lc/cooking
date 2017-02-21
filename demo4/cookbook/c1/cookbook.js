@@ -279,12 +279,21 @@ function cb_showerr(s, lv) {
   alert(s);
 }
 
-var cb_statusText = document.querySelector('#statusText');
-function cb_showinfo(s, lv) {
+//var cb_statusText = document.getElementById('statusText');
+function cb_showinfo(str, lv, ms) {
+  var cb_statusText = document.getElementById('statusText');
+  if(str !== 'undefined') {
+    cb_statusText.innerHTML = str;
+    setTimeout("document.getElementById('statusText').style.display = 'none';", ms);
+}
+
+/*var cb_statusText = document.querySelector('#statusText');
+function cb_showinfo(str, lv, ms) {
   if (lv == 0) {
     cb_statusText.textContent = s;
   }
 }
+*/
 
 function cb_next() {
   
