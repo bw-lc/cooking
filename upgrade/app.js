@@ -68,7 +68,7 @@ function onData(buffer) {
 
 function upgrade_send() {
   if (upgrade_i < gcb_cmds.length) {
-    statusText.textContent = "已经下载" + upgrade_i + ";共" gcb_cmds.length;
+    statusText.textContent = "已经下载" + upgrade_i + ";共" + gcb_cmds.length;
     __send_str(gcb_cmds[upgrade_i]);
     upgrade_i = upgrade_i + 1;
   } else {
