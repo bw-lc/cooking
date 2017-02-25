@@ -125,6 +125,17 @@ function upgrade() {
     upgrade_i = 0;
     upgrade_send();
   } else {
-    alert("未连接,发送\"" + s + "\"失败");
+    alert("未连接,升级失败");
+  }
+}
+
+function u_continue() {
+  if (g_device_id != false) {
+    if (upgrade_i > 0) {
+        upgrade_i = upgrade_i - 1;
+    }
+    upgrade_send();
+  } else {
+    alert("未连接,升级失败")
   }
 }
