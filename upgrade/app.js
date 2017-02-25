@@ -1,6 +1,7 @@
 document.write("<script language=javascript src='/cordova.js'></script>");
 
 var statusText = document.querySelector('#statusText');
+var statusText1 = document.querySelector('#statusText1');
 var statusText2 = document.querySelector('#statusText2');
 var g_device_id = false;
 
@@ -72,6 +73,7 @@ function upgrade_send() {
   if (upgrade_i < gcb_cmds.length) {
     statusText.textContent = "已经下载" + upgrade_i + "/" + gcb_cmds.length;
     __send_str(gcb_cmds[upgrade_i]);
+    statusText1.textContent = gcb_cmds[upgrade_i];
     upgrade_i = upgrade_i + 1;
   } else {
     statusText.textContent = "成功！";
