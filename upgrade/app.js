@@ -1,8 +1,8 @@
 document.write("<script language=javascript src='/cordova.js'></script>");
 
 var statusText = document.querySelector('#statusText');
-var statusText1 = document.querySelector('#statusText1');
-var statusText2 = document.querySelector('#statusText2');
+//var statusText1 = document.querySelector('#statusText1');
+//var statusText2 = document.querySelector('#statusText2');
 var g_device_id = false;
 
 require("cordova!cordova-plugin-ble-central");
@@ -58,14 +58,14 @@ function onData(buffer) {
   for (var i = 0; i < data2.length; i++) {
     s = s + String.fromCharCode(data2[i]);
   }
-  statusText2.textContent = s;
+  //statusText2.textContent = s;
   if (s.substring(0, 1) == ">"  && s.substring(i - 1, i) == ";") {
     if (s.substring(4, 5) == "+" || s.substring(4, 6) == "OK") {
         upgrade_send();
     } else {
         statusText.textContent = s;
     }
-  } 
+  }
 }
 
 
@@ -73,11 +73,11 @@ function upgrade_send() {
   if (upgrade_i < gcb_cmds.length) {
     statusText.textContent = "已经下载" + upgrade_i + "/" + gcb_cmds.length;
     __send_str(gcb_cmds[upgrade_i]);
-    statusText1.textContent = gcb_cmds[upgrade_i];
+    //statusText1.textContent = gcb_cmds[upgrade_i];
     upgrade_i = upgrade_i + 1;
   } else {
     statusText.textContent = "成功！";
-  }    
+  }
 }
 
 
