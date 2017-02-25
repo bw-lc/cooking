@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能锅升级程序</title>
+  </head>
+  <body>
+    <table>
+      <tr><td><font size="5">智能锅升级程序</font></td></tr>
+    </table>
+    <table>
+      <td><div id="statusText">欢迎使用智能锅升级程序</div></td>
+    </table>
+    <table border="1">
+      <tr>
+        <td>连接</td>
+        <td><button onclick=connect(); >连接</button></td>
+      </tr>
+      <tr>
+        <td>断开</td>
+        <td><button onclick=disconnect(); >断开</button></td>
+      </tr>
+      <tr>
+        <td>升级</td>
+        <td><button onclick=upgrade(); >升级</button></td>
+      </tr>
+
+    </table>
+    <table>
+      <tr><td>升级步骤：</td></tr>
+      <tr><td>1. 断电</td></tr>
+      <tr><td>2. 按住电源键不放</td></tr>
+      <tr><td>3. 通电(不能放开电源键)</td></tr>
+      <tr><td>4. 等待20秒(不能放开电源键)</td></tr>
+      <tr><td>5. 松开电源键，智能锅进入升级模式。</td></tr>
+      <tr><td>   如果3、4、5步骤智能锅有鸣叫则说明进入升级模式失败，请重新从1步骤开始操作。</td></tr>
+      <tr><td>   如果此时电源指示灯亮，也说明进入升级模式失败，请重新从1步骤开始操作。</td></tr>
+      <tr><td>6. 按“连接”按钮。</td></tr>
+      <tr><td>   如果长时间没有提示“已连接”，请重新执行第6步，或直接从1步骤开始操作。</td></tr>
+      <tr><td>7. 按“升级”按钮。</td></tr>
+      <tr><td>   如果长时间进度没有变化，请重新执行第7步，或直接从1步骤开始操作。</td></tr>
+      <tr><td>   当提示“成功！”时，表示升级成功，断电重新通电即可正常工作了。</td></tr>
+      
+    </table>
+   
+    <script src="firmware.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
