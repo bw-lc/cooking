@@ -343,20 +343,7 @@
 		var stopButtons = document.getElementsByClassName('stop');
 		for (var i = 0; i < stopButtons.length; i++) {
 			stopButtons[i].onclick = function() {
-				alert('我停止了');
-				<!--点击停止按钮 在这里调用函数-->
-			}
-		}
-
-		/**
-		 * 提示栏的显示与消失
-		 * 传入要提示的字符  5秒后消失。
-		 */
-		function prompt(str) {
-			var promptElement = document.getElementById('statusText');
-			if(str !== 'undefined') {
-				promptElement.innerHTML = str;
-				setTimeout("document.getElementById('statusText').style.display = 'none';",5000);
+				rn_break();
 			}
 		}
     </script>
