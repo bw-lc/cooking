@@ -291,15 +291,21 @@ function cb_showinfo(str, lv, ms) {
 */
 
 var cb_statusText = document.getElementsByClassName('statusText');
+function cb_showinfo_none() {
+  for (var i = 0; i < cb_statusText.length; i++) {
+    //cb_statusText[i].style.color = '#ff0000';
+    cb_statusText[i].innerHTML = '';
+  }
+}
 function cb_showinfo(str, lv, ms) {
   if (lv == 0) {
     for (var i = 0; i < cb_statusText.length; i++) {
-      cb_statusText[i].style.color = '#ff0000';
+      //cb_statusText[i].style.color = '#ff0000';
       cb_statusText[i].innerHTML = str;
+      setTimeout("cb_showinfo_none()", ms);
     }
   }
 }
-
 
 function cb_next() {
   
