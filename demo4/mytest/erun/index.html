@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自制食谱</title>
+  </head>
+  <body>
+    <table>
+      <tr><td><font size="5">自制食谱</font></td></tr>
+    <table>
+    <table>
+      <div id="statusText">欢迎</></div>
+      <div id="info1"></></div>
+      <div id="info2"></></div>
+      <div id="info3"></></div>
+    <table>
+    <table border="1">
+      <tr>
+        <td>连接</td>
+        <td><button onclick=connect(); >连接</button></td>
+      </tr>
+      <tr>
+        <td>断开</td>
+        <td><button onclick=disconnect(); >断开</button></td>
+      </tr>
+      <tr>
+        <td>命令序号</td>
+        <td><input type="text" name="in_index" id="in_index" value="0" readonly="readonly" /></td>
+      </tr>
+      <tr>
+        <td>命令开始提示</td>
+        <td><input type="text" name="in_s" id="in_s" value="第0步"/></td>
+      </tr>
+      <tr>
+        <td>命令结束提示</td>
+        <td><input type="text" name="in_e" id="in_e" value=""/></td>
+      </tr>
+      <tr>
+        <td>选择命令</td>
+        <td>
+           <select name="select" name="in_2" id="in_2">
+             <option value="0">仅仅显示</option>
+             <option value="1">恒定功率加热</option>
+             <option value="2">加热/降温到温度</option>
+             <option value="3" selected="selected">恒定温度加热</option>
+             <option value="4">停止加热</option>
+          </select>
+       </td>
+      </tr>
+      <tr>
+        <td>完成处理</td>
+        <td>
+           <select name="select" name="in_3" id="in_3">
+             <option value="s">等待人工操作</option>
+             <option value="n" selected="selected">自动执行下一步</option>
+          </select>
+       </td>
+      </tr>
+      <tr>
+        <td>温度/功率</td>
+        <td><input type="text" name="in_4" id="in_4" value="180" /></td>
+      </tr>
+      <tr>
+        <td>执行时间</td>
+        <td><input type="text" name="in_5" id="in_5" value="240" /></td>
+      </tr>
+      <tr>
+        <td><button onclick=reset_c(); >放弃所有输入</button></td>
+        <td><button onclick=set_c(); >输入</button></td>
+      </tr>
+      <tr>
+      </tr>
+      <tr>
+        <td><button onclick=send_str("&gt;run_n\;"); >下一步</button></td>
+        <td><button onclick=run_c(); >执行</button></td>
+      </tr>
+      <tr>
+        <td><button onclick=pause(1); >暂停</button></td>
+        <td><button onclick=pause(0); >继续</button></td>
+      </tr>
+      <tr>
+        <td><button onclick=alert(document.URL); >test1</button></td>
+        <td><button onclick="javascript:history.go(-1);">后退</button></td>
+      </tr>
+    </table>
+
+    <table>
+      <font size = "3" color = "blue"> 版权所有 @</font>
+    </table>
+    <script src="cookbook.js"></script>
+    <script src="run.js"></script>
+  </body>
+</html>

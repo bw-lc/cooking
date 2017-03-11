@@ -219,6 +219,7 @@ function rn_leave() {
 }
 
 function rn_break() {
-  rn_send_str(">run_o 0,1;");
+  //rn_send_str(">run_o 0,1;");
+  rn_send_str("break;");
   setTimeout("rn_leave();", 2200);
 }

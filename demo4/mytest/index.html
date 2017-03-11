@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.5">
+        <title> 食谱测试 </title>
+    </head>
+
+    <body><h10>
+        <table>
+            <tr><td><font size="5">食谱测试</font></td></tr>
+        <table>
+        <table>
+            <tr><td><a href="javascript:js_href('test/');">命令测试</a></td></tr>
+            <tr><td></td></tr>
+            <tr><td><a href="javascript:js_href('erun/');">自制食谱</a></td></tr>
+            <tr><td></td></tr>
+        </table>
+        <table">
+            <font size = "3" color = "blue"> 版权所有 @</font>
+        </table>
+    </h10>
+  </body>
+	<script>
+	function js_href (url){
+    var access_id;
+    try {
+      access_id = parseInt(localStorage.getItem("access_id"));
+    }
+    catch(err) {
+      access_id = 0;
+    }
+    if (isNaN(access_id)) {
+      access_id = 0;
+    }
+    access_id = access_id + 1;
+    localStorage.setItem("access_id", access_id);
+    window.location.href = url + "?access_id=" + access_id.toString();
+	}
+	</script>
+  
+</html>
