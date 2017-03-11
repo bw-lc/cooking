@@ -41,7 +41,7 @@ function __cb_onInit(swiper) {
   __play.onclick = cb_play_onclick;
   __connect.onclick = cb_connect_onclick;
   __mute.onclick = cb_mute_onclick;
-  __time.onclick = cb_last;
+  //__time.onclick = cb_last;
 }  
 
 function cb_onInit(swiper) {
@@ -64,10 +64,10 @@ function cb_onSlideChangeStart(swiper) {
   }
 }
 
-function cb_last() {
+/*function cb_last() {
   rn_disconnect();
   history.go(-1);
-}
+}*/
 
 function cb_set_play_flg(f) {
   var index = gcb_swiper.activeIndex;
@@ -192,47 +192,16 @@ function cb_ok(url) {
 
 
 var gcb_cmds = [
-{"cmd": ">set_c 0,2,s,140,1;", "swiper_index": 1, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
-{"cmd": ">set_c 1,3,n,140,180;", "swiper_index": 2, "start_js": "gcb_media.pause()", "end_js": ""},
-{"cmd": ">set_c 2,4,s,0,1;", "swiper_index": 3, "start_js": "", "end_js": "cb_media_play()"},
+{"cmd": ">set_c 0,2,s,220,1;", "swiper_index": 4, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
+{"cmd": ">set_c 1,3,n,180,360;", "swiper_index": 5, "start_js": "gcb_media.pause()", "end_js": ""},
+{"cmd": ">set_c 2,3,s,180,1;", "swiper_index": 6, "start_js": "", "end_js": "cb_media_play()"},
 
-{"cmd": ">set_c 3,2,s,180,1;", "swiper_index": 4, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
-{"cmd": ">set_c 4,3,n,180,600;", "swiper_index": 5, "start_js": "gcb_media.pause()", "end_js": ""},
-{"cmd": ">set_c 5,4,s,0,1;", "swiper_index": 6, "start_js": "", "end_js": "cb_media_play()"},
+{"cmd": ">set_c 3,3,n,180,360;", "swiper_index": 7, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
+{"cmd": ">set_c 4,4,n,0,1;", "swiper_index": 8, "start_js": "", "end_js": "cb_media_play()"},
 
-{"cmd": ">set_c 6,2,s,220,1;", "swiper_index": 7, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
-{"cmd": ">set_c 7,3,n,220,300;", "swiper_index": 8, "start_js": "gcb_media.pause()", "end_js": ""},
-{"cmd": ">set_c 8,4,s,0,1;", "swiper_index": 9, "start_js": "", "end_js": "cb_media_play()"},
-
-{"cmd": ">set_c 9,2,s,260,1;", "swiper_index": 10, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
-{"cmd": ">set_c 10,3,n,260,30;", "swiper_index": 11, "start_js": "gcb_media.pause()", "end_js": ""},
-{"cmd": ">set_c 11,4,n,0,1;", "swiper_index": 12, "start_js": "", "end_js": "cb_media_play()"},
-
-{"cmd": ">run_c;", "swiper_index": 13, "start_js": "", "end_js": ""}
+{"cmd": ">run_c;", "swiper_index": 9, "start_js": "", "end_js": ""}
 ];
 
-/*
-
-var gcb_cmds = [
-{"cmd": ">set_c 0,2,s,45,1;", "swiper_index": 1, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
-{"cmd": ">set_c 1,3,n,45,18;", "swiper_index": 2, "start_js": "gcb_media.pause()", "end_js": ""},
-{"cmd": ">set_c 2,4,s,0,1;", "swiper_index": 3, "start_js": "", "end_js": "cb_media_play()"},
-
-{"cmd": ">set_c 3,2,s,55,1;", "swiper_index": 4, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
-{"cmd": ">set_c 4,3,n,55,60;", "swiper_index": 5, "start_js": "gcb_media.pause()", "end_js": ""},
-{"cmd": ">set_c 5,4,s,0,1;", "swiper_index": 6, "start_js": "", "end_js": "cb_media_play()"},
-
-{"cmd": ">set_c 6,2,s,65,1;", "swiper_index": 7, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
-{"cmd": ">set_c 7,3,n,65,30;", "swiper_index": 8, "start_js": "gcb_media.pause()", "end_js": ""},
-{"cmd": ">set_c 8,4,s,0,1;", "swiper_index": 9, "start_js": "", "end_js": "cb_media_play()"},
-
-{"cmd": ">set_c 9,2,s,75,1;", "swiper_index": 10, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
-{"cmd": ">set_c 10,3,n,75,10;", "swiper_index": 11, "start_js": "gcb_media.pause()", "end_js": ""},
-{"cmd": ">set_c 11,4,n,0,1;", "swiper_index": 12, "start_js": "", "end_js": "cb_media_play()"},
-
-{"cmd": ">run_c;", "swiper_index": 13, "start_js": "", "end_js": ""}
-];
-*/
 
 function cb_getlen() {
   return gcb_cmds.length;
@@ -279,10 +248,31 @@ function cb_showerr(s, lv) {
   alert(s);
 }
 
-var cb_statusText = document.querySelector('#statusText');
-function cb_showinfo(s, lv) {
+/*
+//var cb_statusText = document.getElementById('statusText');
+function cb_showinfo(str, lv, ms) {
+  var cb_statusText = document.getElementById('statusText');
+  if(str !== 'undefined') {
+    cb_statusText.innerHTML = str;
+    setTimeout("document.getElementById('statusText').style.display = 'none';", ms);
+  }
+}
+*/
+
+var cb_statusText = document.getElementsByClassName('statusText');
+function cb_showinfo_none() {
+  for (var i = 0; i < cb_statusText.length; i++) {
+    //cb_statusText[i].style.color = '#ff0000';
+    cb_statusText[i].innerHTML = '';
+  }
+}
+function cb_showinfo(str, lv, ms) {
   if (lv == 0) {
-    cb_statusText.textContent = s;
+    for (var i = 0; i < cb_statusText.length; i++) {
+      //cb_statusText[i].style.color = '#ff0000';
+      cb_statusText[i].innerHTML = str;
+      setTimeout("cb_showinfo_none()", ms);
+    }
   }
 }
 
