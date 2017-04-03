@@ -118,8 +118,8 @@ function cb_set_run_info(temperature, time) {
   var __time = document.getElementsByClassName('cb_time')[index];
   
   temperature = Math.floor(temperature / 1);
-  __temperature.textContent = temperature + "℃"; //"°";
-  gcb_swiper.params.temperature = temperature + "℃"; //"°";
+  __temperature.textContent = temperature + "℃  "; //"°";
+  gcb_swiper.params.temperature = temperature + "℃  "; //"°";
 
   hh = Math.floor(time / 3600);
   mm = Math.floor((time % 3600) / 60);
