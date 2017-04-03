@@ -18,7 +18,7 @@ var gcb_swiper = new Swiper('.swiper-container', {
   connectImg: '-313px',
   muteImg: '-254px',
   temperature: "___℃  ",//°",
-  time: '__:__:__',
+  time: '_:__:__',
   onInit: cb_onInit,
   onSlideChangeStart: cb_onSlideChangeStart
 });
