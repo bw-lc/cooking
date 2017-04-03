@@ -196,7 +196,7 @@ var gcb_cmds = [
 {"cmd": ">set_c 1,3,s,180,420;", "swiper_index": 5, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
 
 {"cmd": ">set_c 2,3,n,180,360;", "swiper_index": 6, "start_js": "gcb_media.pause()", "end_js": ""},
-{"cmd": ">set_c 3,4,n,0,5;", "swiper_index": 7, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
+{"cmd": ">set_c 3,4,n,0,1;", "swiper_index": 7, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
 
 {"cmd": ">run_c;", "swiper_index": 8, "start_js": "", "end_js": ""}
 ];
