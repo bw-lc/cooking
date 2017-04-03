@@ -195,9 +195,9 @@ var gcb_cmds = [
 {"cmd": ">set_c 0,2,s,180,1;", "swiper_index": 6, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
 {"cmd": ">set_c 1,3,s,160,240;", "swiper_index": 7, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
 
-{"cmd": ">set_c 2,4,s,0,1;", "swiper_index": 8, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
+{"cmd": ">set_c 2,4,n,0,5;", "swiper_index": 8, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
 
-{"cmd": ">set_c 3,0,s,0,5;", "swiper_index": 9, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
+{"cmd": ">set_c 3,0,n,0,1;", "swiper_index": 9, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
 
 {"cmd": ">run_c;", "swiper_index": 10, "start_js": "", "end_js": ""}
 ];
