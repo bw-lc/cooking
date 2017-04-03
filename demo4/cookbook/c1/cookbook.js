@@ -206,7 +206,7 @@ var gcb_cmds = [
 
 {"cmd": ">set_c 9,2,s,260,1;", "swiper_index": 10, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
 {"cmd": ">set_c 10,3,n,260,30;", "swiper_index": 11, "start_js": "gcb_media.pause()", "end_js": ""},
-{"cmd": ">set_c 11,4,s,0,1;", "swiper_index": 12, "start_js": "", "end_js": "cb_media_play()"},
+{"cmd": ">set_c 11,4,n,0,5;", "swiper_index": 12, "start_js": "", "end_js": "cb_media_play()"},
 
 {"cmd": ">run_c;", "swiper_index": 13, "start_js": "", "end_js": ""}
 ];
