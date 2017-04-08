@@ -67,12 +67,12 @@ function connect() {
   setTimeout("finding();", 1000);
 }
 
-var g_device_id = false;
+var g_device_id = 1;
 function find_ble(info) {
   dname = info.name;
   rssi = parseInt(info.rssi);
   if (dname.search("bwdcl-") == 0) { // && rssi > -75) {
-    if (g_device_id == false) {
+    if (g_device_id == 1) {
         g_device_id = JSON.stringify(info);//info.id.toString();
     } else {
         g_device_id = g_device_id + "<br>" + JSON.stringify(info);//info.id.toString();
