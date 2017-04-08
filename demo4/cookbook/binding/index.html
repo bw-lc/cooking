@@ -21,9 +21,15 @@
       </tr>
 
       <tr>
+      </tr>
+
+      <tr>
         <td>测试连接</td>
         <td><button onclick=connect();>连接</button></td>
         <td><button onclick=disconnect();>断开</button></td>
+      </tr>
+
+      <tr>
       </tr>
 
       <tr>
@@ -31,6 +37,16 @@
         <td></td>
         <td><button onclick="javascript:history.go(-1);">后退</button></td>
       </tr>
+
+      <tr>
+      </tr>
+
+      <tr>
+      </tr>
+
+      <tr>
+      </tr>
+
     </table>
 
       <div class="statusText2"></div>
@@ -69,15 +85,39 @@ function char_onData(buffer) {
 
 function connect() {
   showinfo("正在连接...");
-  showinfo2("");
-  ble.connect(g_device_id[0], conned, errCallBack);
-  ble.startNotification(grn_device_id, "ffe0", "ffe4", char_onData, errCallBack);
+  //showinfo2("");
+
+  var device_id;
+  try {
+    device_id = parseInt(localStorage.getItem("device_id"));
+  }
+  catch(err) {
+    showinfo("请先绑定设备");
+  }
+  if (isNaN(device_id)) {
+    showinfo("请先绑定设备");
+  } else {
+    ble.connect(device_id, conned, errCallBack);
+    ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
+  }
 }
 
 function disconnect() {
-  ble.stopNotification(grn_device_id, "ffe0", "ffe4", rn_suCallBack2, rn_errCallBack2);
-  ble.disconnect(grn_device_id, rn_suCallBack2, rn_errCallBack2);
-  showinfo("已断开...");
+
+  var device_id;
+  try {
+    device_id = parseInt(localStorage.getItem("device_id"));
+  }
+  catch(err) {
+    showinfo("请先绑定设备");
+  }
+  if (isNaN(device_id)) {
+    showinfo("请先绑定设备");
+  } else {
+    ble.stopNotification(grn_device_id, "ffe0", "ffe4", rn_suCallBack2, rn_errCallBack2);
+    ble.disconnect(grn_device_id, rn_suCallBack2, rn_errCallBack2);
+    showinfo("已断开...");
+  }
 }
 
 
@@ -128,7 +168,7 @@ function find_ble(info) {
 
 function bind(i) {
   if (i < g_device_id.length) {
-    localStorage.setItem("mac_id", g_device_id[i]);
+    localStorage.setItem("device_id", g_device_id[i]);
     showinfo("绑定成功");
   } else {
     showinfo("绑定失败");
