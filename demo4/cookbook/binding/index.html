@@ -73,9 +73,9 @@ function find_ble(info) {
   rssi = parseInt(info.rssi);
   if (dname.search("bwdcl-") == 0) { // && rssi > -75) {
     if (g_device_id == false) {
-        g_device_id = info.id.toString();
+        g_device_id = JSON.stringify(info);//info.id.toString();
     } else {
-        g_device_id = g_device_id + "<br>" + info.id.toString();
+        g_device_id = g_device_id + "<br>" + JSON.stringify(info);//info.id.toString();
     }
     showinfo2(g_device_id);
   } else {
