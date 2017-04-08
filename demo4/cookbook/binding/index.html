@@ -104,6 +104,11 @@ function connect() {
   showinfo("正在连接...");
   //showinfo2("");
 
+  device_id = JSON.parse('"88:C2:55:35:6E:80"');
+  ble.connect(device_id, conned, errCallBack);
+  ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
+
+/*
   var device_id;
   try {
     device_id = localStorage.getItem("device_id");
@@ -118,6 +123,7 @@ function connect() {
     ble.connect(device_id, conned, errCallBack);
     ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
   }
+*/
 }
 
 function disconnect() {
