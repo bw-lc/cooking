@@ -57,6 +57,7 @@ function successCallBack(status) {
 function clearClick() {
   document.addEventListener('deviceready', onDeviceReady);
   function onDeviceReady() {
+    showinfo("...");
     window.cache.clear(successCallBack, errCallBack);
   }
 }
