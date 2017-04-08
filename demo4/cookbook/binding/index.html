@@ -100,27 +100,46 @@ function char_onData(buffer) {
   showinfo(s);
 }
 
+var grn_finding;
+function rn_finding() {
+  grn_finding = grn_finding - 1;
+  if (grn_finding > 0) {
+    showinfo("正在查找设备，剩余" + grn_finding + "秒...", 0, 1000);
+    setTimeout("rn_finding();", 1000);
+  } else {
+    if (grn_device_id == false) {
+      cb_showinfo("未找到设备。", 0, 5000);
+    }
+  }
+}
+
+function find_ble2(info) {
+  device_id = localStorage.getItem("device_id");
+  device_id = JSON.parse(device_id);
+  dname = info.name;
+  rssi = parseInt(info.rssi);
+  if (dname.id == device_id) {
+    ble.connect(device_id, conned, errCallBack);
+    ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
+  } else {
+    showinfo(JSON.stringify(info));
+  }
+}
+
 function connect() {
-  showinfo("正在连接...");
-  //showinfo2("");
-
-
-/*  device_id = JSON.parse('"88:C2:55:35:6E:80"');
-  ble.connect(device_id, conned, errCallBack);
-  ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
-*/
-
+  showinfo("正在查找设备，剩余15秒...");
+  showinfo2("");
   var device_id;
   try {
     device_id = localStorage.getItem("device_id");
   }
   catch(err) {
     showinfo("请先绑定设备");
+    return;
   }
-  device_id = JSON.parse(device_id);
-  ble.connect(device_id, conned, errCallBack);
-  ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
-  
+  grn_finding = 15;
+  ble.scan([], 15, find_ble2, errCallBack);
+  setTimeout("rn_finding();", 1000);
 }
 
 function disconnect() {
@@ -131,6 +150,7 @@ function disconnect() {
   }
   catch(err) {
     showinfo("请先绑定设备");
+    return;
   }
   device_id = JSON.parse(device_id);
   ble.stopNotification(device_id, "ffe0", "ffe4", suCallBack2, errCallBack2);
@@ -162,7 +182,6 @@ function scan() {
   g_device_i = 0;
   g_device_id = new Array();
 }
-
 
 function find_ble(info) {
   dname = info.name;
