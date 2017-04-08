@@ -63,7 +63,9 @@
   </body>
 
   <script>
+  
 require("cordova!cordova-plugin-ble-central");
+
 function showinfo(str) {
   var cb_statusText = document.getElementsByClassName('statusText');
   cb_statusText[0].innerHTML = str;
@@ -72,6 +74,12 @@ function showinfo(str) {
 function showinfo2(str) {
   var cb_statusText2 = document.getElementsByClassName('statusText2');
   cb_statusText2[0].innerHTML = str;
+}
+
+function suCallBack2(info) {
+}
+
+function errCallBack2(info) {
 }
 
 function errCallBack(info) {
@@ -106,8 +114,8 @@ function connect() {
   if (isNaN(device_id)) {
     showinfo("请先绑定设备");
   } else {
-    ble.connect(device_id, conned, errCallBack);
-    ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
+    ble.connect(device_id.id, conned, errCallBack);
+    ble.startNotification(device_id.id, "ffe0", "ffe4", char_onData, errCallBack);
   }
 }
 
@@ -123,8 +131,8 @@ function disconnect() {
   if (isNaN(device_id)) {
     showinfo("请先绑定设备");
   } else {
-    ble.stopNotification(grn_device_id, "ffe0", "ffe4", rn_suCallBack2, rn_errCallBack2);
-    ble.disconnect(grn_device_id, rn_suCallBack2, rn_errCallBack2);
+    ble.stopNotification(device_id.id, "ffe0", "ffe4", suCallBack2, errCallBack2);
+    ble.disconnect(device_id.id, suCallBack2, errCallBack2);
     showinfo("已断开...");
   }
 }
@@ -160,18 +168,13 @@ function find_ble(info) {
   rssi = parseInt(info.rssi);
   if (dname.search("bwdcl-") == 0) { // && rssi > -75) {
     //showinfo(info.name);
-    g_device_id[g_device_i] = info.id;
+    g_device_id[g_device_i] = info;
     
-    if (g_device_i == 0) {
-      localStorage.setItem("device_id", g_device_id[i]);
-    }
-    
-
     g_device_i = g_device_i + 1;
     //str = g_device_id[0];
     str = '<tr><td><button onclick="bind(0);">绑定' + g_device_id[0] + '</button></td></tr>';
     for (i = 1; i < g_device_id.length; i++) {
-        str = str + '<tr><td><button onclick="bind(' + i + ');">绑定' + g_device_id[i] + '</button></td></tr>';
+        str = str + '<tr><td><button onclick="bind(' + i + ');">绑定' + g_device_id[i].id + '</button></td></tr>';
     }
     showinfo2(str);
     //showinfo2(info.id);
@@ -183,7 +186,7 @@ function find_ble(info) {
 function bind(i) {
   if (i < g_device_id.length) {
     localStorage.setItem("device_id", g_device_id[i]);
-    showinfo("绑定" + g_device_id[i] + "成功！");
+    showinfo("绑定" + g_device_id[i].id + "成功！");
   } else {
     showinfo("绑定失败");
   }
@@ -200,7 +203,7 @@ function show_id() {
   if (isNaN(device_id)) {
     showinfo("还未绑定设备");
   } else {
-    showinfo("已绑定:" + device_id);
+    showinfo("已绑定:" + device_id.id);
   }
 }
 
