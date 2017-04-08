@@ -11,25 +11,24 @@
       <tr><td><font size="5">绑定智能锅</font></td></tr>
     </table>
 
-      <div class="statusText"></div> 
+      <div class="statusText"></div>
 
     <table border="1">
       <tr>
         <td>扫描</td>
+        <td></td>
         <td><button onclick=scan();>扫描</button></td>
-      </tr>
-      <tr>
-        <td>mac地址</td>
-        <td><input type="text" name="in_index" id="in_index" value="0" /></td>
       </tr>
 
       <tr>
-        <td>连接</td>
+        <td>测试连接</td>
         <td><button onclick=connect();>连接</button></td>
+        <td><button onclick=disconnect();>断开</button></td>
       </tr>
 
       <tr>
         <td>后退</td>
+        <td></td>
         <td><button onclick="javascript:history.go(-1);">后退</button></td>
       </tr>
     </table>
@@ -37,7 +36,7 @@
       <div class="statusText2"></div>
 
   </body>
- 
+
   <script>
 require("cordova!cordova-plugin-ble-central");
 function showinfo(str) {
@@ -58,12 +57,29 @@ function conned(info) {
   showinfo("已连接...");
 }
 
+function char_onData(buffer) {
+  var data2 = new Uint8Array(buffer);
+  var s = '';
+
+  for (var i = 0; i < data2.length; i++) {
+    s = s + String.fromCharCode(data2[i]);
+  }
+  showinfo(s);
+}
+
 function connect() {
   showinfo("正在连接...");
   showinfo2("");
-  //ble.connect("88:C2:55:35:6E:80", conned, errCallBack);
   ble.connect(g_device_id[0], conned, errCallBack);
+  ble.startNotification(grn_device_id, "ffe0", "ffe4", char_onData, errCallBack);
 }
+
+function disconnect() {
+  ble.stopNotification(grn_device_id, "ffe0", "ffe4", rn_suCallBack2, rn_errCallBack2);
+  ble.disconnect(grn_device_id, rn_suCallBack2, rn_errCallBack2);
+  showinfo("已断开...");
+}
+
 
 var g_finding;
 function finding() {
@@ -96,20 +112,26 @@ function find_ble(info) {
   if (dname.search("bwdcl-") == 0) { // && rssi > -75) {
     //showinfo(info.name);
     g_device_id[g_device_i] = info.id;
-    if (g_device_i = 0) {
-        //localStorage.setItem("mac_id", info.id);
-        
-    }
 
     g_device_i = g_device_i + 1;
-    str = g_device_id[0];
+    //str = g_device_id[0];
+    str = '<tr><td><button onclick="bind(0);">绑定' + g_device_id[0] + '</button></td></tr>';
     for (i = 1; i < g_device_id.length; i++) {
-        str = str + "<br>" + g_device_id[i];
+        str = str + '<tr><td><button onclick="bind(0);">绑定' + g_device_id[i] + '</button></td></tr>';
     }
     showinfo2(str);
     //showinfo2(info.id);
   } else {
     showinfo(JSON.stringify(info));
+  }
+}
+
+function bind(i) {
+  if (i < g_device_id.length) {
+    localStorage.setItem("mac_id", g_device_id[i]);
+    showinfo("绑定成功");
+  } else {
+    showinfo("绑定失败");
   }
 }
 
