@@ -172,7 +172,7 @@ function find_ble(info) {
     
     g_device_i = g_device_i + 1;
     //str = g_device_id[0];
-    str = '<tr><td><button onclick="bind(0);">绑定' + g_device_id[0] + '</button></td></tr>';
+    str = '<tr><td><button onclick="bind(0);">绑定' + g_device_id[0].id + '</button></td></tr>';
     for (i = 1; i < g_device_id.length; i++) {
         str = str + '<tr><td><button onclick="bind(' + i + ');">绑定' + g_device_id[i].id + '</button></td></tr>';
     }
@@ -198,7 +198,7 @@ function show_id() {
     device_id = parseInt(localStorage.getItem("device_id"));
   }
   catch(err) {
-    showinfo("还未绑定设备");
+    showinfo("还未绑定设备2" + device_id);
   }
   if (isNaN(device_id)) {
     showinfo("还未绑定设备");
