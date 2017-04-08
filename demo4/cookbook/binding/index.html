@@ -32,7 +32,7 @@
 
   </body>
  
-<script>
+  <script>
 require("cordova!cordova-plugin-ble-central");
 function showinfo(str) {
   var cb_statusText = document.getElementsByClassName('statusText');
@@ -74,6 +74,7 @@ function find_ble(info) {
   dname = info.name;
   rssi = parseInt(info.rssi);
   if (dname.search("bwdcl-") == 0) { // && rssi > -75) {
+    showinfo(JSON.stringify(info));
     g_device_id[g_device_i] = info.id.toString();
 /*    if (g_device_id == 0) {
         g_device_id = JSON.stringify(info);//info.id.toString();
@@ -81,12 +82,13 @@ function find_ble(info) {
         g_device_id = g_device_id + "<br>" + JSON.stringify(info);//info.id.toString();
     }
     */
+    g_device_i = g_device_i + 1;
     showinfo2(JSON.stringify(g_device_id));
   } else {
     showinfo(JSON.stringify(info));
   }
 }
 
-</script>
+  </script>
 
 </html>
