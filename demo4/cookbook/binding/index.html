@@ -105,11 +105,11 @@ function connect() {
   //showinfo2("");
 
 
-  device_id = JSON.parse('"88:C2:55:35:6E:80"');
+/*  device_id = JSON.parse('"88:C2:55:35:6E:80"');
   ble.connect(device_id, conned, errCallBack);
   ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
+*/
 
-/*
   var device_id;
   try {
     device_id = localStorage.getItem("device_id");
@@ -120,7 +120,7 @@ function connect() {
   device_id = JSON.parse(device_id);
   ble.connect(device_id, conned, errCallBack);
   ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
-  */
+  
 }
 
 function disconnect() {
