@@ -120,7 +120,7 @@ function find_ble2(info) {
   device_id = JSON.parse(device_id);
   dname = info.name;
   rssi = parseInt(info.rssi);
-  if (device_id.id == device_id) {
+  if (info.id == device_id) {
     ble.connect(device_id, conned, errCallBack);
     ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
   } else {
