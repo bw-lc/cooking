@@ -60,6 +60,7 @@ function finding() {
 }
 
 var g_device_i  = 0;
+var g_device_id = 0;
 
 function connect() {
   showinfo("正在查找设备，剩余15秒...");
@@ -67,24 +68,25 @@ function connect() {
   ble.scan([], 15, find_ble, errCallBack);
   setTimeout("finding();", 1000);
   g_device_i = 0;
+  g_device_id = new Array();
 }
 
-var g_device_id = new Array();
 
 function find_ble(info) {
   dname = info.name;
   rssi = parseInt(info.rssi);
   if (dname.search("bwdcl-") == 0) { // && rssi > -75) {
-    showinfo(info.name);
+    showinfo(info.id);
     g_device_id[g_device_i] = info.id;
     g_device_i = g_device_i + 1;
 
-    var str = g_device_id[0].toString();
+    str = g_device_i.toString();
+    //str = g_device_id[0].toString();
     //for (i = 1; i < g_device_id.length; i++) {
     //    str = str + "<br>" + g_device_id[i];
     //}
     //showinfo2(str);
-    showinfo2(info.id);
+    showinfo2(info.name);
   } else {
     showinfo(JSON.stringify(info));
   }
