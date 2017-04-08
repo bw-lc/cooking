@@ -61,7 +61,8 @@ function conned(info) {
 function connect() {
   showinfo("正在连接...");
   showinfo2("");
-  ble.connect("88:C2:55:35:6E:80", conned, errCallBack);
+  //ble.connect("88:C2:55:35:6E:80", conned, errCallBack);
+  ble.connect(g_device_id[0], conned, errCallBack);
 }
 
 var g_finding;
