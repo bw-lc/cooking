@@ -67,17 +67,21 @@ function connect() {
   setTimeout("finding();", 1000);
 }
 
-var g_device_id = 1;
+var g_device_id = new Array();
+var g_device_i  = 0;
+
 function find_ble(info) {
   dname = info.name;
   rssi = parseInt(info.rssi);
   if (dname.search("bwdcl-") == 0) { // && rssi > -75) {
-    if (g_device_id == 1) {
+    g_device_id[g_device_i] = info.id.toString();
+/*    if (g_device_id == 0) {
         g_device_id = JSON.stringify(info);//info.id.toString();
     } else {
         g_device_id = g_device_id + "<br>" + JSON.stringify(info);//info.id.toString();
     }
-    showinfo2(g_device_id);
+    */
+    showinfo2(JSON.stringify(g_device_id));
   } else {
     showinfo(JSON.stringify(info));
   }
