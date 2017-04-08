@@ -74,7 +74,7 @@ function find_ble(info) {
   dname = info.name;
   rssi = parseInt(info.rssi);
   if (dname.search("bwdcl-") == 0) { // && rssi > -75) {
-    showinfo(JSON.stringify(info));
+    showinfo(info.name);
     g_device_id[g_device_i] = info.id;
     g_device_i = g_device_i + 1;
 
