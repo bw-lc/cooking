@@ -16,12 +16,18 @@
     <table border="1">
       <tr>
         <td>扫描</td>
-        <td><button onclick=connect();>扫描</button></td>
+        <td><button onclick=scan();>扫描</button></td>
       </tr>
       <tr>
         <td>mac地址</td>
         <td><input type="text" name="in_index" id="in_index" value="0" /></td>
       </tr>
+
+      <tr>
+        <td>连接</td>
+        <td><button onclick=connect();>连接</button></td>
+      </tr>
+
       <tr>
         <td>后退</td>
         <td><button onclick="javascript:history.go(-1);">后退</button></td>
@@ -48,6 +54,16 @@ function errCallBack(info) {
   showinfo("失败：" + JSON.stringify(info));
 }
 
+function rn_conned(info) {
+  showinfo("已连接...");
+}
+
+function connect() {
+  showinfo("正在连接...");
+  showinfo2("");
+  ble.connect("88:C2:55:35:6E:80", conned, errCallBack);
+}
+
 var g_finding;
 function finding() {
   g_finding = g_finding - 1;
@@ -62,7 +78,7 @@ function finding() {
 var g_device_i  = 0;
 var g_device_id = 0;
 
-function connect() {
+function scan() {
   showinfo("正在查找设备，剩余15秒...");
   showinfo2("");
   g_finding = 15;
@@ -77,10 +93,14 @@ function find_ble(info) {
   dname = info.name;
   rssi = parseInt(info.rssi);
   if (dname.search("bwdcl-") == 0) { // && rssi > -75) {
-    showinfo(info.name);
+    //showinfo(info.name);
     g_device_id[g_device_i] = info.id;
-    g_device_i = g_device_i + 1;
+    if (g_device_i = 0) {
+        //localStorage.setItem("mac_id", info.id);
+        
+    }
 
+    g_device_i = g_device_i + 1;
     str = g_device_id[0];
     for (i = 1; i < g_device_id.length; i++) {
         str = str + "<br>" + g_device_id[i];
