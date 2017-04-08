@@ -11,7 +11,7 @@
       <tr><td><font size="5">清除缓存</font></td></tr>
     </table>
 
-      <div class="statusText">欢迎</div>
+      <div class="statusText"></div>
 
     <table border="1">
       <tr>
@@ -31,14 +31,13 @@
   <script>
 require("cordova!cordova-plugin-ble-central");
 require("cordova!at.modalog.cordova.plugin.cache");
-
-var cb_statusText = document.getElementsByClassName('statusText');
 function showinfo(str) {
+  var cb_statusText = document.getElementsByClassName('statusText');
   cb_statusText[0].innerHTML = str;
 }
 
-var cb_statusText2 = document.getElementsByClassName('statusText2');
 function showinfo2(str) {
+  var cb_statusText2 = document.getElementsByClassName('statusText2');
   cb_statusText2[0].innerHTML = str;
 }
 
