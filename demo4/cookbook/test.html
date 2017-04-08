@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<script src="/cordova.js"></script>
+<body onload="on_load()">
+  <div class="statusText"></div>    
+</body>
+<script>
+  var cb_statusText = document.getElementsByClassName('statusText');
+  var access_id;
+  try {
+    access_id = parseInt(localStorage.getItem("access_id"));
+  }
+  catch(err) {
+    access_id = 0;
+  }
+  if (isNaN(access_id)) {
+    access_id = 0;
+  }    
+  cb_statusText[0].innerHTML = access_id;
+</script>
+</html>
