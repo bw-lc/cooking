@@ -9,10 +9,10 @@
   <body>
     <table>
       <tr><td><font size="5">绑定智能锅</font></td></tr>
-    <table>
-    <table>
-      <div id="statusText">欢迎</></div>
-    <table>
+    </table>
+
+      <div class="statusText"></div> 
+
     <table border="1">
       <tr>
         <td>扫描</td>
@@ -27,17 +27,13 @@
         <td><button onclick="javascript:history.go(-1);">后退</button></td>
       </tr>
     </table>
-    <table>
-      <div id="statusText2"></></div>
-    <table>
 
-    <table>
-      <font size = "3" color = "blue"> 版权所有 @</font>
-    </table>
+      <div class="statusText"></div>
+
   </body>
  
 <script>
-
+require("cordova!cordova-plugin-ble-central");
 function showinfo(str) {
   var cb_statusText = document.getElementsByClassName('statusText');
   cb_statusText[0].innerHTML = str;
@@ -87,21 +83,6 @@ function find_ble(info) {
   }
 }
 
-
-/*
-{  
-  var mac_id;
-  try {
-    mac_id = parseInt(localStorage.getItem("mac_id"));
-  }
-  catch(err) {
-    mac_id = 0;
-  }
-  if (isNaN(access_id)) {
-    mac_id = 0;
-  }    
-}
-*/
 </script>
 
 </html>
