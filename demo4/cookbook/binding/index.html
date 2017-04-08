@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绑定智能锅</title>
+    <script src="/cordova.js"></script>
+  </head>
+  <body>
+    <table>
+      <tr><td><font size="5">绑定智能锅</font></td></tr>
+    <table>
+    <table>
+      <div id="statusText">欢迎</></div>
+    <table>
+    <table border="1">
+      <tr>
+        <td>扫描</td>
+        <td><button onclick=connect();>扫描</button></td>
+      </tr>
+      <tr>
+        <td>mac地址</td>
+        <td><input type="text" name="in_index" id="in_index" value="0" /></td>
+      </tr>
+      <tr>
+        <td>后退</td>
+        <td><button onclick="javascript:history.go(-1);">后退</button></td>
+      </tr>
+    </table>
+    <table>
+      <div id="statusText2"></></div>
+    <table>
+
+    <table>
+      <font size = "3" color = "blue"> 版权所有 @</font>
+    </table>
+  </body>
+ 
+<script>
+
+function showinfo(str) {
+  var cb_statusText = document.getElementsByClassName('statusText');
+  cb_statusText[0].innerHTML = str;
+}
+
+function showinfo2(str) {
+  var cb_statusText2 = document.getElementsByClassName('statusText2');
+  cb_statusText2[0].innerHTML = str;
+}
+
+function errCallBack(info) {
+  showinfo("失败：" + JSON.stringify(info));
+}
+
+var g_finding;
+function finding() {
+  g_finding = g_finding - 1;
+  if (g_finding > 0) {
+    showinfo("正在查找设备，剩余" + g_finding + "秒...");
+    setTimeout("finding();", 1000);
+  } else {
+      showinfo("查找完毕。");
+  }
+}
+
+
+function connect() {
+  showinfo("正在查找设备，剩余15秒...");
+  g_finding = 15;
+  ble.scan([], 15, find_ble, errCallBack);
+  setTimeout("finding();", 1000);
+}
+
+var g_device_id = false;
+function find_ble(info) {
+  dname = info.name;
+  rssi = parseInt(info.rssi);
+  if (dname.search("bwdcl-") == 0) { // && rssi > -75) {
+    if (g_device_id == false) {
+        g_device_id = info.id.toString();
+    } else {
+        g_device_id = g_device_id + "<br>" + info.id.toString();
+    }
+    showinfo(g_device_id);
+  } else {
+    showinfo(JSON.stringify(info));
+  }
+}
+
+
+/*
+{  
+  var mac_id;
+  try {
+    mac_id = parseInt(localStorage.getItem("mac_id"));
+  }
+  catch(err) {
+    mac_id = 0;
+  }
+  if (isNaN(access_id)) {
+    mac_id = 0;
+  }    
+}
+*/
+</script>
+
+</html>
