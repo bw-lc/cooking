@@ -86,10 +86,6 @@ function errCallBack(info) {
   showinfo("失败：" + JSON.stringify(info));
 }
 
-function conned(info) {
-  showinfo("已连接...");
-}
-
 function char_onData(buffer) {
   var data2 = new Uint8Array(buffer);
   var s = '';
@@ -113,12 +109,18 @@ function rn_finding() {
   }
 }
 
+function conned(info) {
+  showinfo("已连接...");
+  grn_finding = 1;
+}
+
+
 function find_ble2(info) {
   device_id = localStorage.getItem("device_id");
   device_id = JSON.parse(device_id);
   dname = info.name;
   rssi = parseInt(info.rssi);
-  if (dname.id == device_id) {
+  if (device_id.id == device_id) {
     ble.connect(device_id, conned, errCallBack);
     ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
   } else {
