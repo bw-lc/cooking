@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>绑定智能锅</title>
     <script src="/cordova.js"></script>
   </head>
@@ -11,13 +11,22 @@
       <tr><td><font size="5">绑定智能锅</font></td></tr>
     </table>
 
-      <div class="statusText"></div>
+      <div class="statusText">^_^</div>
 
     <table border="1">
       <tr>
         <td>扫描</td>
         <td></td>
         <td><button onclick=scan();>扫描</button></td>
+      </tr>
+
+      <tr>
+      </tr>
+
+      <tr>
+        <td>查看已绑定</td>
+        <td></td>
+        <td><button onclick=show_id();>查看</button></td>
       </tr>
 
       <tr>
@@ -157,7 +166,7 @@ function find_ble(info) {
     //str = g_device_id[0];
     str = '<tr><td><button onclick="bind(0);">绑定' + g_device_id[0] + '</button></td></tr>';
     for (i = 1; i < g_device_id.length; i++) {
-        str = str + '<tr><td><button onclick="bind(0);">绑定' + g_device_id[i] + '</button></td></tr>';
+        str = str + '<tr><td><button onclick="bind(' + i + ');">绑定' + g_device_id[i] + '</button></td></tr>';
     }
     showinfo2(str);
     //showinfo2(info.id);
@@ -172,6 +181,21 @@ function bind(i) {
     showinfo("绑定成功");
   } else {
     showinfo("绑定失败");
+  }
+}
+
+function show_id() {
+  var device_id;
+  try {
+    device_id = parseInt(localStorage.getItem("device_id"));
+  }
+  catch(err) {
+    showinfo("还未绑定设备");
+  }
+  if (isNaN(device_id)) {
+    showinfo("还未绑定设备");
+  } else {
+    showinfo("已绑定:" + device_id);
   }
 }
 
