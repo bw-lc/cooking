@@ -114,6 +114,7 @@ function connect() {
   if (isNaN(device_id)) {
     showinfo("请先绑定设备");
   } else {
+    device_id = JSON.parse(device_id);
     ble.connect(device_id, conned, errCallBack);
     ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
   }
@@ -131,6 +132,7 @@ function disconnect() {
   if (isNaN(device_id)) {
     showinfo("请先绑定设备");
   } else {
+    device_id = JSON.parse(device_id);
     ble.stopNotification(device_id, "ffe0", "ffe4", suCallBack2, errCallBack2);
     ble.disconnect(device_id, suCallBack2, errCallBack2);
     showinfo("已断开...");
@@ -185,7 +187,7 @@ function find_ble(info) {
 
 function bind(i) {
   if (i < g_device_id.length) {
-    localStorage.setItem("device_id", g_device_id[i]);
+    localStorage.setItem("device_id", JSON.stringify(g_device_id[i]));
     showinfo("绑定" + g_device_id[i] + "成功！");
   } else {
     showinfo("绑定失败");
@@ -203,6 +205,7 @@ function show_id() {
   if (isNaN(device_id)) {
     showinfo("还未绑定设备");
   } else {
+    device_id = JSON.parse(device_id);
     showinfo("已绑定:" + device_id);
   }
 }
