@@ -178,7 +178,7 @@ function find_ble(info) {
 function bind(i) {
   if (i < g_device_id.length) {
     localStorage.setItem("device_id", g_device_id[i]);
-    showinfo("绑定成功");
+    showinfo("绑定" + g_device_id[i] + "成功！(" + i + ")");
   } else {
     showinfo("绑定失败");
   }
