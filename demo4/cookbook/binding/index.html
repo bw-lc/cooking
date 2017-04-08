@@ -104,11 +104,12 @@ function connect() {
   showinfo("正在连接...");
   //showinfo2("");
 
+/*
   device_id = JSON.parse('"88:C2:55:35:6E:80"');
   ble.connect(device_id, conned, errCallBack);
   ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
+*/
 
-/*
   var device_id;
   try {
     device_id = localStorage.getItem("device_id");
@@ -123,7 +124,6 @@ function connect() {
     ble.connect(device_id, conned, errCallBack);
     ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
   }
-*/
 }
 
 function disconnect() {
@@ -176,7 +176,7 @@ function find_ble(info) {
   rssi = parseInt(info.rssi);
   if (dname.search("bwdcl-") == 0) { // && rssi > -75) {
     //showinfo(info.name);
-    g_device_id[g_device_i] = info.id;
+    g_device_id[g_device_i] = JSON.stringify(info.id);
     
     g_device_i = g_device_i + 1;
     //str = g_device_id[0];
@@ -193,8 +193,8 @@ function find_ble(info) {
 
 function bind(i) {
   if (i < g_device_id.length) {
-    localStorage.setItem("device_id", JSON.stringify(g_device_id[i]));
-    showinfo("绑定" + JSON.stringify(g_device_id[i]) + "成功！");
+    localStorage.setItem("device_id", g_device_id[i]);
+    showinfo("绑定" + g_device_id[i] + "成功！");
   } else {
     showinfo("绑定失败");
   }
