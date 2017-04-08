@@ -66,6 +66,7 @@ function connect() {
   g_finding = 15;
   ble.scan([], 15, find_ble, errCallBack);
   setTimeout("finding();", 1000);
+  g_device_i = 0;
 }
 
 var g_device_id = new Array();
@@ -78,7 +79,7 @@ function find_ble(info) {
     g_device_id[g_device_i] = info.id;
     g_device_i = g_device_i + 1;
 
-    var str = g_device_id[0];
+    var str = g_device_id[0].toString();
     //for (i = 1; i < g_device_id.length; i++) {
     //    str = str + "<br>" + g_device_id[i];
     //}
