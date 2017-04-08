@@ -64,6 +64,7 @@ var g_device_id = 0;
 
 function connect() {
   showinfo("正在查找设备，剩余15秒...");
+  showinfo2("");
   g_finding = 15;
   ble.scan([], 15, find_ble, errCallBack);
   setTimeout("finding();", 1000);

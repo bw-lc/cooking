@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清除缓存</title>
+    <script src="/cordova.js"></script>
+  </head>
+  <body>
+    <table>
+      <tr><td><font size="5">清除缓存</font></td></tr>
+    </table>
+
+      <div class="statusText"></div>
+
+    <table border="1">
+      <tr>
+        <td>扫描</td>
+        <td><button onclick=clearClick();>扫描</button></td>
+      </tr>
+      <tr>
+        <td>后退</td>
+        <td><button onclick="javascript:history.go(-1);">后退</button></td>
+      </tr>
+    </table>
+
+      <div class="statusText2"></div>
+
+  </body>
+
+  <script>
+require("cordova!cordova-plugin-ble-central");
+require("cordova!at.modalog.cordova.plugin.cache");
+function showinfo(str) {
+  var cb_statusText = document.getElementsByClassName('statusText');
+  cb_statusText[0].innerHTML = str;
+}
+
+function showinfo2(str) {
+  var cb_statusText2 = document.getElementsByClassName('statusText2');
+  cb_statusText2[0].innerHTML = str;
+}
+
+function errCallBack(status) {
+  showinfo("失败：" + status);
+}
+
+function successCallBack(status) {
+  showinfo("信息：" + status);
+}
+
+function clearClick() {
+  document.addEventListener('deviceready', onDeviceReady);
+  function onDeviceReady() {
+    window.cache.clear(successCallBack, errCallBack);
+  }
+}
+
+  </script>
+
+</html>
