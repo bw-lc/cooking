@@ -59,6 +59,7 @@ function finding() {
   }
 }
 
+var g_device_i  = 0;
 
 function connect() {
   showinfo("正在查找设备，剩余15秒...");
@@ -68,7 +69,6 @@ function connect() {
 }
 
 var g_device_id = new Array();
-var g_device_i  = 0;
 
 function find_ble(info) {
   dname = info.name;
@@ -78,7 +78,7 @@ function find_ble(info) {
     g_device_id[g_device_i] = info.id;
     g_device_i = g_device_i + 1;
 
-    //str = g_device_id[0];
+    str = g_device_id[0];
     //for (i = 1; i < g_device_id.length; i++) {
     //    str = str + "<br>" + g_device_id[i];
     //}
