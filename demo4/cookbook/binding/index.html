@@ -84,8 +84,8 @@ function find_ble(info) {
     for (i = 1; i < g_device_id.length; i++) {
         str = str + "<br>" + g_device_id[i];
     }
-    //showinfo2(str);
-    showinfo2(info.id);
+    showinfo2(str);
+    //showinfo2(info.id);
   } else {
     showinfo(JSON.stringify(info));
   }
