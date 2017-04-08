@@ -161,6 +161,11 @@ function find_ble(info) {
   if (dname.search("bwdcl-") == 0) { // && rssi > -75) {
     //showinfo(info.name);
     g_device_id[g_device_i] = info.id;
+    
+    if (g_device_i == 0) {
+      localStorage.setItem("device_id", g_device_id[i]);
+    }
+    
 
     g_device_i = g_device_i + 1;
     //str = g_device_id[0];
@@ -178,7 +183,7 @@ function find_ble(info) {
 function bind(i) {
   if (i < g_device_id.length) {
     localStorage.setItem("device_id", g_device_id[i]);
-    showinfo("绑定" + g_device_id[i] + "成功！(" + i + ")");
+    showinfo("绑定" + g_device_id[i] + "成功！");
   } else {
     showinfo("绑定失败");
   }
