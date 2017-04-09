@@ -14,20 +14,21 @@
     </table>
     <table border="1">
       <tr>
+        <td>页面</td>
+        <td><button onclick="javascript:history.go(-1);" >后退</button></td>
+      </tr>
+
+      <tr>
         <td>连接</td>
         <td><button onclick=connect(); >连接</button></td>
         <td>断开</td>
         <td><button onclick=disconnect(); >断开</button></td>
       </tr>
+    </table>
+    <table border="1">
       <tr>
-        <td>恒定功率</td>
         <td><input type="text" name="int11" id="int11" value="get_t" size=15 /></td>
-        <td><button onclick=run_cmd(); >恒定功率</button></td>
-      </tr>
-
-      <tr>
-        <td>页面</td>
-        <td><button onclick="javascript:history.go(-1);" >后退</button></td>
+        <td><button onclick=run_cmd(); >发送命令</button></td>
       </tr>
 
     </table>

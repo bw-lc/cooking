@@ -142,3 +142,11 @@ function u_continue() {
     alert("未连接,升级失败")
   }
 }
+
+function in_upgrade() {
+  if (g_device_id != false) {
+    send_str(">upgrade;");
+  } else {
+    alert("请先连接！")
+  }
+}
