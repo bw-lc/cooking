@@ -104,5 +104,6 @@ function get_s() {
 
 function set_tc() {
   s = ">set_tc " + document.getElementById("int11").value + "," + document.getElementById("int12").value + "," + document.getElementById("int13").value + ";"
+  alert(s);
   send_str(s);
 }
