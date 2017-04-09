@@ -103,6 +103,6 @@ function get_s() {
 }
 
 function set_tc() {
-  s = ">run_at " + document.getElementById("int11").value + "," + document.getElementById("int12").value + "," + document.getElementById("int13").value + ";"
+  s = ">set_tc " + document.getElementById("int11").value + "," + document.getElementById("int12").value + "," + document.getElementById("int13").value + ";"
   send_str(s);
 }
