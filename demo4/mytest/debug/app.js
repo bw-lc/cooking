@@ -97,6 +97,6 @@ function send_str(s) {
 }
 
 function run_cmd() {
-  s = ">run_to " + document.getElementById("int11").value + ";"
+  s = ">" + document.getElementById("int11").value + ";"
   send_str(s);
 }
