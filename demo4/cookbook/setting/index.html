@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <title>绑定智能锅</title>
+    <script src="/cordova.js"></script>
+  </head>
+  <body>
+    <table>
+      <tr><td><font size="5">绑定智能锅</font></td></tr>
+    </table>
+
+      <div class="statusText">^_^</div>
+
+    <table border="1">
+      <tr>
+        <td>扫描</td>
+        <td></td>
+        <td><button onclick=scan();>扫描</button></td>
+      </tr>
+
+      <tr>
+      </tr>
+
+      <tr>
+        <td>查看已绑定</td>
+        <td></td>
+        <td><button onclick=show_id();>查看</button></td>
+      </tr>
+
+      <tr>
+      </tr>
+
+      <tr>
+        <td>测试连接</td>
+        <td><button onclick=connect();>连接</button></td>
+        <td><button onclick=disconnect();>断开</button></td>
+      </tr>
+
+      <tr>
+      </tr>
+
+      <tr>
+        <td>后退</td>
+        <td></td>
+        <td><button onclick="javascript:history.go(-1);">后退</button></td>
+      </tr>
+
+      <tr>
+      </tr>
+
+      <tr>
+      </tr>
+
+      <tr>
+      </tr>
+
+    </table>
+
+      <div class="statusText2"></div>
+
+  </body>
+
+  <script>
+  
+require("cordova!cordova-plugin-ble-central");
+
+function showinfo(str) {
+  var cb_statusText = document.getElementsByClassName('statusText');
+  cb_statusText[0].innerHTML = str;
+}
+
+function showinfo2(str) {
+  var cb_statusText2 = document.getElementsByClassName('statusText2');
+  cb_statusText2[0].innerHTML = str;
+}
+
+function suCallBack2(info) {
+}
+
+function errCallBack2(info) {
+}
+
+function errCallBack(info) {
+  showinfo("失败：" + JSON.stringify(info));
+}
+
+function char_onData(buffer) {
+  var data2 = new Uint8Array(buffer);
+  var s = '';
+
+  for (var i = 0; i < data2.length; i++) {
+    s = s + String.fromCharCode(data2[i]);
+  }
+  showinfo(s);
+}
+
+var grn_finding;
+function rn_finding() {
+  grn_finding = grn_finding - 1;
+  if (grn_finding > 0) {
+    showinfo("正在查找设备，剩余" + grn_finding + "秒...", 0, 1000);
+    setTimeout("rn_finding();", 1000);
+  } else {
+    if (grn_device_id == false) {
+      cb_showinfo("未找到设备。", 0, 5000);
+    }
+  }
+}
+
+function conned(info) {
+  showinfo("已连接...");
+  grn_finding = 1;
+}
+
+
+function find_ble2(info) {
+  device_id = localStorage.getItem("device_id");
+  device_id = JSON.parse(device_id);
+  dname = info.name;
+  rssi = parseInt(info.rssi);
+  if (info.id == device_id) {
+    ble.connect(device_id, conned, errCallBack);
+    ble.startNotification(device_id, "ffe0", "ffe4", char_onData, errCallBack);
+  } else {
+    showinfo(JSON.stringify(info));
+  }
+}
+
+function connect() {
+  showinfo("正在查找设备，剩余15秒...");
+  showinfo2("");
+  var device_id;
+  try {
+    device_id = localStorage.getItem("device_id");
+  }
+  catch(err) {
+    showinfo("请先绑定设备");
+    return;
+  }
+  grn_finding = 15;
+  ble.scan([], 15, find_ble2, errCallBack);
+  setTimeout("rn_finding();", 1000);
+}
+
+function disconnect() {
+
+  var device_id;
+  try {
+    device_id = localStorage.getItem("device_id");
+  }
+  catch(err) {
+    showinfo("请先绑定设备");
+    return;
+  }
+  device_id = JSON.parse(device_id);
+  ble.stopNotification(device_id, "ffe0", "ffe4", suCallBack2, errCallBack2);
+  ble.disconnect(device_id, suCallBack2, errCallBack2);
+  showinfo("已断开...");
+}
+
+
+var g_finding;
+function finding() {
+  g_finding = g_finding - 1;
+  if (g_finding > 0) {
+    showinfo("正在查找设备，剩余" + g_finding + "秒...");
+    setTimeout("finding();", 1000);
+  } else {
+      showinfo("查找完毕。");
+  }
+}
+
+var g_device_i  = 0;
+var g_device_id = 0;
+
+function scan() {
+  showinfo("正在查找设备，剩余15秒...");
+  showinfo2("");
+  g_finding = 15;
+  ble.scan([], 15, find_ble, errCallBack);
+  setTimeout("finding();", 1000);
+  g_device_i = 0;
+  g_device_id = new Array();
+}
+
+function find_ble(info) {
+  dname = info.name;
+  rssi = parseInt(info.rssi);
+  if (dname.search("bwdcl-") == 0) { // && rssi > -75) {
+    //showinfo(info.name);
+    g_device_id[g_device_i] = JSON.stringify(info.id);
+    
+    g_device_i = g_device_i + 1;
+    //str = g_device_id[0];
+    str = '<tr><td><button onclick="bind(0);">绑定' + g_device_id[0] + '</button></td></tr>';
+    for (i = 1; i < g_device_id.length; i++) {
+        str = str + '<tr><td><button onclick="bind(' + i + ');">绑定' + g_device_id[i] + '</button></td></tr>';
+    }
+    showinfo2(str);
+    //showinfo2(info.id);
+  } else {
+    showinfo(JSON.stringify(info));
+  }
+}
+
+function bind(i) {
+  if (i < g_device_id.length) {
+    localStorage.setItem("device_id", g_device_id[i]);
+    device_id = localStorage.getItem("device_id");
+    showinfo("绑定" + device_id + "成功！");
+  } else {
+    showinfo("绑定失败");
+  }
+}
+
+function show_id() {
+  var device_id;
+  try {
+    device_id = localStorage.getItem("device_id");
+  }
+  catch(err) {
+    showinfo("还未绑定设备2" + device_id);
+  }
+  device_id = JSON.parse(device_id);
+  showinfo("已绑定:" + device_id);
+}
+
+  </script>
+
+</html>
