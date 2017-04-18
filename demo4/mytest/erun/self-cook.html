@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自制食谱</title>
+    <link rel="stylesheet" href="../../css/weui.min.css"/>
+  </head>
+  <body>
+    <div style="background-color:#E64A19; width: 100%;">
+        <div>
+          <ul style="list-style: none; position: relative; line-height: 0; padding-left: 10px; padding: 10px 10px;">
+            <li style="width: 20%;display: inline-block; margin-left: 5px;">
+              <a href="javascript:;" class="weui_btn weui_btn_mini weui_btn_default">蓝牙</a>
+            </li>
+            <li style="width: 10%; line-height: 32px; display: inline-block; color:#fff; font-size: 20px; position: absolute;">
+              <div class="cb_temperature" >60°</div>
+            </li>
+            <li style="width: 10%; line-height: 32px; display: inline-block; margin-left: 50px; color:#fff;font-size: 20px; position: absolute;">
+              <div class="cb_time">0:00:00</div>
+            </li>
+            
+          </ul>
+        </div>
+    </div>
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell weui_cell_switch">
+            <div class="weui_cell_hd weui_cell_primary">连接</div>
+            <div class="weui_cell_ft">
+                <input class="weui_switch" type="checkbox">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+				<label class="weui_label">命令序号</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number" placeholder="请输入命令序号">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+				<label class="weui_label">命令开始提示</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number" placeholder="命令开始提示">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+				<label class="weui_label">命令结束提示</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number" placeholder="命令结束提示">
+            </div>
+        </div>
+        <div class="weui_cell weui_cell_select weui_select_after">
+            <div class="weui_cell_hd">
+                <label for="" class="weui_label">选择命令</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <select class="weui_select" name="select2">
+                    <option value="1">恒定温度加热</option>
+                    <option value="2">仅仅显示</option>
+                    <option value="3">恒定功率加热</option>
+                    <option value="4">加热/降温到温度</option>
+                    <option value="5">停止加热<option>
+                </select>
+            </div>
+        </div>
+        <div class="weui_cell weui_cell_select weui_select_after">
+            <div class="weui_cell_hd">
+                <label for="" class="weui_label">完成处理</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <select class="weui_select" name="select2">
+                    <option value="1">自动执行下一步</option>
+                    <option value="2">等待人工操作</option>
+                </select>
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+				<label class="weui_label">温度/功率</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number" placeholder="180">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+				<label class="weui_label">执行时间</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number" placeholder="240">
+            </div>
+        </div>
+        <a href="javascript:reset_c();" class="weui_btn weui_btn_mini weui_btn_warn">取消所有操作</a>
+        <a href="javascript:set_c();" class="weui_btn weui_btn_mini weui_btn_primary">输入</a>
+        <a href="javascript:send_str("&gt;run_n\;");" class="weui_btn weui_btn_mini weui_btn_primary">下一步</a>
+        <a href="javascript:run_c();" class="weui_btn weui_btn_mini weui_btn_primary">执行</a>
+        <a href="javascript:pause(1);" class="weui_btn weui_btn_mini weui_btn_primary">暂停</a>
+        <a href="javascript:pause(0);" class="weui_btn weui_btn_mini weui_btn_primary">继续</a>
+        <a href="javascript:history.go(-1);" class="weui_btn weui_btn_mini weui_btn_primary">后退</a>
+    </div>
+
+    <script src="cookbook.js"></script>
+    <script src="run.js"></script>
+  </body>
+</html>

@@ -197,9 +197,10 @@ var gcb_cmds = [
 
 {"cmd": ">set_c 2,4,n,0,5;", "swiper_index": 8, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
 
-{"cmd": ">set_c 3,0,n,0,1;", "swiper_index": 9, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
+//{"cmd": ">set_c 3,0,n,0,1;", "swiper_index": 9, "start_js": "gcb_media.pause()", "end_js": "cb_media_play()"},
 
-{"cmd": ">run_c;", "swiper_index": 10, "start_js": "", "end_js": ""}
+//{"cmd": ">run_c;", "swiper_index": 10, "start_js": "", "end_js": ""}
+{"cmd": ">run_c;", "swiper_index": 9, "start_js": "", "end_js": ""}
 ];
 
 
