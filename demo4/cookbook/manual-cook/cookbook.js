@@ -27,6 +27,7 @@ function cb_set_play_flg(f) {
 }
 
 function cb_set_connect_flg(f) {
+  gcb_connect_flg = f;
   $('connect').checked = f;
 }
 
