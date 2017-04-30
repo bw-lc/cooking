@@ -2,6 +2,7 @@
 
 /*-------Initialize --------------------------------------------------------------------------------*/
 var gcb_connect_flg = false;
+var gcb_finding_flg = false;
 
 function $(id) {
   return document.getElementById(id);
@@ -18,8 +19,11 @@ $('start').onclick = function(e) {
 $('connect').onclick = function(e) {
   if ($('connect').checked != gcb_connect_flg) {
     cb_set_connect_flg(gcb_connect_flg);
-    cb_connect_onclick();
   }
+  if (gcb_finding_flg) {
+    return;
+  }
+  cb_connect_onclick();
 };
 
 /*--------------------------------------------------------------------------------------------------*/
@@ -31,6 +35,14 @@ function cb_set_connect_flg(f) {
 }
 
 function cb_set_mute_flg(f) {
+}
+
+function rn_start_finding() {
+  gcb_finding_flg = true;
+}
+
+function rn_end_finding() {
+  gcb_finding_flg = false;
 }
 
 function cb_set_run_info(temperature, time) {
