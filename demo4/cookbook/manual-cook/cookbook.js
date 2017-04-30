@@ -128,7 +128,7 @@ function cb_showerr(s, lv) {
 
 var cb_statusText = $('statusText');
 function cb_showinfo_none() {
-  cb_statusText.innerHTML = '.';
+  cb_statusText.innerHTML = '&nbsp;';
 }
 
 function cb_showinfo(str, lv, ms) {
