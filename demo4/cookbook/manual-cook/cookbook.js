@@ -148,6 +148,7 @@ function cb_start() {
 
 function run_at() {
   gcb_cmds_at[0]["cmd"] = ">set_c 0,3,n," + $('setTemperature').value + "," + $('setTime').value + ";"
+  alert(gcb_cmds_at[0]["cmd"]);
   gcb_cmds = gcb_cmds_at;
   cb_start();
 }
