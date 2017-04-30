@@ -72,8 +72,7 @@ function cb_connect_onclick() {
 }
 
 function cb_ok(url) {
-  rn_leave();
-  //window.location.href = url;
+  rn_break();
 }
 
 /*-----cookbook-------------------------------------------------------------------------------------------*/
