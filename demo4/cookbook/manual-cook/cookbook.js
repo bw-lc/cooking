@@ -72,7 +72,11 @@ function cb_connect_onclick() {
 }
 
 function cb_ok(url) {
-  rn_break();
+  if (gcb_connect_flg) {
+    rn_break();
+  } else {
+    "history.go(-1);"
+  }
 }
 
 /*-----cookbook-------------------------------------------------------------------------------------------*/
