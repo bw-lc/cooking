@@ -44,7 +44,7 @@ function rn_end_finding() {
 
 function cb_set_run_info(temperature, time) {
   temperature = Math.floor(temperature / 1);
-  $('cTemperature').innerHTML = "当前温度:" + temperature + "℃  "; //"°";
+  $('cTemperature').innerHTML = "当前温度:&nbsp;&nbsp;" + temperature + "℃"; //"°";
 
   hh = Math.floor(time / 3600);
   mm = Math.floor((time % 3600) / 60);
@@ -60,7 +60,7 @@ function cb_set_run_info(temperature, time) {
   } else {
     s = s + ss;
   }
-  $('cTime').innerHTML = "剩余时间:" + s;
+  $('cTime').innerHTML = "剩余时间:&nbsp;&nbsp;" + s;
 }
 
 function cb_connect_onclick() {
