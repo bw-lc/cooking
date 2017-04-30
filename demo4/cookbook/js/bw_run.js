@@ -233,7 +233,7 @@ function rn_run_n() {
 function rn_leave() {
   rn_send_str(">bmute;");
   setTimeout("rn_disconnect();", 100);
-  setTimeout("history.go(-1);", 300);
+  setTimeout("history.go(-1);", 600);
 }
 
 function rn_break() {
