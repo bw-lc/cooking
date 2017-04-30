@@ -16,8 +16,10 @@ $('start').onclick = function(e) {
 };
 
 $('connect').onclick = function(e) {
-  cb_set_connect_flg(false);
-  cb_connect_onclick();
+  if ($('connect').checked != gcb_connect_flg) {
+    cb_set_connect_flg(gcb_connect_flg);
+    cb_connect_onclick();
+  }
 };
 
 /*--------------------------------------------------------------------------------------------------*/
