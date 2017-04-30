@@ -2,7 +2,6 @@
 
 /*-------Initialize --------------------------------------------------------------------------------*/
 var gcb_connect_flg = false;
-var gcb_finding_flg = false;
 
 function $(id) {
   return document.getElementById(id);
@@ -19,9 +18,6 @@ $('start').onclick = function(e) {
 $('connect').onclick = function(e) {
   if ($('connect').checked != gcb_connect_flg) {
     cb_set_connect_flg(gcb_connect_flg);
-  }
-  if (gcb_finding_flg) {
-    return;
   }
   cb_connect_onclick();
 };

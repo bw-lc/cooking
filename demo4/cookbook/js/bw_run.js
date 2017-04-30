@@ -29,6 +29,7 @@ function rn_suCallBack2(info) {
 function rn_errCallBack2(info) {
 }
 
+var gcb_finding_flg = false;
 var grn_finding;
 function rn_finding() {
   grn_finding = grn_finding - 1;
@@ -38,6 +39,7 @@ function rn_finding() {
   } else {
     if (grn_device_id == false) {
       cb_showinfo("未找到设备。", 0, 5000);
+      gcb_finding_flg = false;
       try {
         rn_end_finding();
       } catch(err) {
@@ -47,12 +49,16 @@ function rn_finding() {
 }
 
 function rn_connect() {
+  if (gcb_finding_flg) {
+    return;
+  }
   grn_device_id = false;
   grn_device_char = false;
   cb_showinfo("正在查找设备，剩余15秒...", 0, 1000);
   grn_finding = 15;
   ble.scan([], 15, rn_find_ble, rn_errCallBack);
   setTimeout("rn_finding();", 1000);
+  gcb_finding_flg = true;
   try {
     rn_start_finding();
   } catch(err) {
@@ -79,6 +85,7 @@ function rn_conned(info) {
   cordova.plugins.backgroundMode.enable();
   grn_device_char  = info.characteristics;
   ble.startNotification(grn_device_id, "ffe0", "ffe4", rn_char_onData, rn_errCallBack);
+  gcb_finding_flg = true;
   try {
     rn_end_finding();
   } catch(err) {
