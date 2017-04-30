@@ -10,7 +10,7 @@ function $(id) {
 $('start').onclick = function(e) {
   if ($('x11').checked == true) {
     run_at();
-  } else if ($('x11').checked == true) {
+  } else if ($('x12').checked == true) {
     run_to();
   }
 };
@@ -60,7 +60,7 @@ function cb_set_run_info(temperature, time) {
   } else {
     s = s + ss;
   }
-  $('cTime').innerHTML = number;
+  $('cTime').innerHTML = s;
 }
 
 function cb_connect_onclick() {
@@ -148,7 +148,6 @@ function cb_start() {
 
 function run_at() {
   gcb_cmds_at[0]["cmd"] = ">set_c 0,3,n," + $('setTemperature').value + "," + $('setTime').value + ";"
-  alert(gcb_cmds_at[0]["cmd"]);
   gcb_cmds = gcb_cmds_at;
   cb_start();
 }
