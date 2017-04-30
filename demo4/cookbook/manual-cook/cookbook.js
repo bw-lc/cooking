@@ -75,7 +75,7 @@ function cb_ok(url) {
   if (gcb_connect_flg) {
     rn_break();
   } else {
-    "history.go(-1);"
+    history.go(-1);
   }
 }
 
