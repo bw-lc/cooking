@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手动烹饪</title>
+    <link rel="stylesheet" href="../../css/weui.min.css"/>
+  </head>
+  <body>
+  <div class="weui_cells" style=" margin-top: 0px;">
+	    <div class="weui_cell" style="background-color: #E64A19;text-align: center;height: 40px;line-height: 40px;//margin-top: -20px;">
+	        <div class="weui_cell_bd weui_cell_primary">
+	            <p style="color:#FFFFFF;"><b>手动烹饪</b></p>
+	        </div>
+
+	    </div>
+	</div>
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell weui_cell_switch">
+            <div class="statusText" id="statusText"></div>
+            <div class="weui_cell_hd weui_cell_primary">连接</div>
+            <div class="weui_cell_ft">
+                <input class="weui_switch" type="checkbox" id="connect">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p id="cTemperature">当前温度</p>
+            </div>
+            <div class="weui_cell_ft">600</div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p id="cTime">剩余时间</p>
+            </div>
+            <div class="weui_cell_ft">600</div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+				<label class="weui_label">设置温度</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number" placeholder="设置温度" id="setTemperature">
+            </div>
+        </div>
+        <div class="weui_cell">
+            <div class="weui_cell_hd">
+				<label class="weui_label">设定时间</label>
+            </div>
+            <div class="weui_cell_bd weui_cell_primary">
+                <input class="weui_input" type="number" placeholder="设定时间" id="setTime">
+            </div>
+        </div>
+        <div class="weui_cells_title">计时模式</div>
+        <div class="weui_cells weui_cells_radio">
+            <label class="weui_cell weui_check_label" for="x11">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>立即计时</p>
+                </div>
+                <div class="weui_cell_ft">
+                    <input type="radio" class="weui_check" name="radio1" id="x11" checked="checked">
+                    <span class="weui_icon_checked"></span>
+                </div>
+            </label>
+            <label class="weui_cell weui_check_label" for="x12">
+
+                <div class="weui_cell_bd weui_cell_primary">
+                    <p>升温后计时</p>
+                </div>
+                <div class="weui_cell_ft">
+                    <input type="radio" name="radio1" class="weui_check" id="x12">
+                    <span class="weui_icon_checked"></span>
+                </div>
+            </label>
+        </div>
+        <a href="javascript:;" class="weui_btn weui_btn_primary" style="margin:20px 0" id="start">开始加热</a>
+        <a href="javascript:cb_ok('/index.html');" class="weui_btn weui_btn_warn" style="margin:20px 0">返回</a>
+    </div>
+
+    <script src="cookbook.js"></script>
+    <script src="../js/bw_run.js"></script>
+<!--
+    <script type="text/javascript">
+        function $ (id) {
+            return document.getElementById(id);
+        }
+
+        var connected = false;
+
+        $('connect').onclick = function(e) {
+
+            connected = connected ? false : true ;
+
+            console.log(connected);
+
+        }
+
+        /*
+         * 显示当前温度
+         * @param number 传入当前温度
+         */
+
+         function showTemperature(number) {
+             $('cTemperature').innerHTML = number;
+         }
+
+         /*
+          * @param number 传入当前时间
+          */
+          function showTime(number) {
+              $('cTime').innerHTML = number;
+          }
+
+        /*
+         * 获取设置温度值
+         */
+          function setTemperatureValue() {
+              return $('setTemperature').innerHTML;
+          }
+
+          /*
+           * 获取设置时间值
+           */
+           function setTime() {
+               return $('setTime').innerHTML;
+           }
+
+           /*
+            * 开始加热
+            */
+            $('start').onclick = function(e) {
+                alert('开始按钮被点击了');
+            }
+
+    </script>
+-->
+
+  </body>
+</html>
