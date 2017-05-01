@@ -166,6 +166,7 @@ function rn_disconnect() {
   grn_device_id = false;
   grn_device_char = false;
   cordova.plugins.backgroundMode.disable();
+  rn_finded();
 }
 
 function __rn_send_str2(s) {

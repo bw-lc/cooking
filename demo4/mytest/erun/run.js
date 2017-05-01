@@ -36,14 +36,24 @@ function finded() {
   } else {
     if (g_device_id == false) {
       cb_showinfo("未找到设备。", 0);
+      setTimeout("rn_finded();", 1000);
     }
   }
 }
 
+function rn_finded() {
+  gcb_finding_flg = false;
+}
+
+var gcb_finding_flg = false;
 function connect() {
+  if (gcb_finding_flg) {
+    return;
+  }
   cb_showinfo("正在查找设备，剩余15秒...", 0);
   ble.scan([], 15, find_ble, errCallBack);
   g_finding = 15;
+  gcb_finding_flg = true;
   setTimeout("finded();", 1000);
 }
 
@@ -66,6 +76,7 @@ function conned(info) {
   cb_showinfo("已连接...", 0);
   g_char  = info.characteristics;
   ble.startNotification(g_device_id, "ffe0", "ffe4", onData, errCallBack);
+  setTimeout("rn_finded();", 1000);
 }
 
 function onData(buffer) {
@@ -137,6 +148,7 @@ function disconnect() {
   statusText.textContent = '已断开';
   g_device_id = false;
   g_char = false;
+  rn_finded();
 }
 
 function __send_str2(s) {
