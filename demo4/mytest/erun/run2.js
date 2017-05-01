@@ -222,13 +222,13 @@ function test2() {
 }
 
 function rn_leave() {
-  rn_send_str(">bmute;");
+  send_str(">bmute;");
   setTimeout("disconnect();", 300);
   setTimeout("history.go(-1);", 600);
 }
 
 function rn_break() {
-  rn_send_str(">run_o 0,1;");
+  send_str(">run_o 0,1;");
   //rn_send_str("break;");
   setTimeout("rn_leave();", 2500);
 }
