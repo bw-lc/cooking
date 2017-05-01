@@ -90,3 +90,11 @@ function cb_set_connect_flg(f) {
   gcb_connect_flg = f;
   $('connect').checked = f;
 }
+
+function cb_connect_onclick() {
+  if (gcb_connect_flg) {
+    disconnect();
+  } else {
+    connect();
+  }
+}
