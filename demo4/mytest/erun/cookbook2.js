@@ -98,3 +98,11 @@ function cb_connect_onclick() {
     connect();
   }
 }
+
+function cb_ok() {
+  if (gcb_connect_flg) {
+    rn_break();
+  } else {
+    history.go(-1);
+  }
+}

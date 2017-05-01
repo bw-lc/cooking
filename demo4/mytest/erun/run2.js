@@ -220,3 +220,16 @@ function test2() {
   }
   alert("access_id:" + access_id);
 }
+
+function rn_leave() {
+  rn_send_str(">bmute;");
+  setTimeout("rn_disconnect();", 300);
+  setTimeout("history.go(-1);", 600);
+}
+
+function rn_break() {
+  rn_send_str(">run_o 0,1;");
+  //rn_send_str("break;");
+  setTimeout("rn_leave();", 2500);
+}
+
