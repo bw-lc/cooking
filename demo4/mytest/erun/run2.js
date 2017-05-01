@@ -232,4 +232,3 @@ function rn_break() {
   //rn_send_str("break;");
   setTimeout("rn_leave();", 2500);
 }
-

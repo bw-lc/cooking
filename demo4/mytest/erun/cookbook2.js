@@ -61,7 +61,6 @@ function set_c() {
   document.getElementById("in_e").value = "";
 }
 
-
 function reset_c() {
   cb_index = 0;
   cb_cmds = new Array();
@@ -72,6 +71,11 @@ function reset_c() {
   document.getElementById("in_s").value = "第" + cb_index + "步";
   document.getElementById("in_e").value = "";
 }
+
+function reset_c() {
+  send_str(">run_n\;")
+}
+
 
 var gcb_connect_flg = false;
 
