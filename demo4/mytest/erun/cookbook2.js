@@ -1,4 +1,5 @@
 var cb_statusText = document.querySelector('#statusText');
+var cb_info1 = document.querySelector('#info1');
 
 var cb_cmds= new Array();
 var cb_start = new Array();
@@ -45,13 +46,7 @@ function cb_showerr(s, lv) {
 }
 
 function cb_showinfo(s, lv) {
-  if (lv == 0) {
-    cb_info1.textContent = s;
-  } else if (lv == 1) {
-    cb_info2.textContent = s;
-  } else {
-    cb_info3.textContent = s;
-  }
+  cb_info1.textContent = s;
 }
 
 function set_c() {
@@ -76,4 +71,22 @@ function reset_c() {
   document.getElementById("in_index").value = "0";
   document.getElementById("in_s").value = "第" + cb_index + "步";
   document.getElementById("in_e").value = "";
+}
+
+var gcb_connect_flg = false;
+
+function $(id) {
+  return document.getElementById(id);
+}
+
+$('connect').onclick = function(e) {
+  if ($('connect').checked != gcb_connect_flg) {
+    cb_set_connect_flg(gcb_connect_flg);
+  }
+  cb_connect_onclick();
+};
+
+function cb_set_connect_flg(f) {
+  gcb_connect_flg = f;
+  $('connect').checked = f;
 }

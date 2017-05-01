@@ -80,3 +80,11 @@ function reset_c() {
   document.getElementById("in_s").value = "第" + cb_index + "步";
   document.getElementById("in_e").value = "";
 }
+
+function cb_connect_onclick() {
+  if (gcb_connect_flg) {
+    disconnect();
+  } else {
+    conned();
+  }
+}

@@ -9,22 +9,17 @@
   <body>
     <div class="weui_cells weui_cells_form">
         <div class="weui_cell">
-            <div class="weui_cell_hd weui_cell_primary">
-                <p style="background-color:#E64A19; width: 100%;" id="cTemperature">当前温度:</p>
-            </div>
-            <div class="weui_cell_bd weui_cell_primary">
-                <p style="background-color:#E64A19; width: 100%;" id="cTime">剩余时间:</p>
-            </div>
+            <div style="background-color:#E64A19; width: 100%;" class="statusText" id="statusText">&nbsp;</div>
         </div>
 
-        <div class="weui_cell weui_cell_switch">
-            <div class="statusText" id="statusText">&nbsp;</div>
+        <div class="weui_cell">
+            <div id="info1">&nbsp;</div>
         </div>
 
         <div class="weui_cell weui_cell_switch">
             <div class="weui_cell_hd weui_cell_primary">连接</div>
             <div class="weui_cell_ft">
-                <input class="weui_switch" type="checkbox">
+                <input class="weui_switch" type="checkbox" id="connect">
             </div>
         </div>
 
@@ -33,7 +28,7 @@
 				<label class="weui_label">命令序号</label>
             </div>
             <div class="weui_cell_bd weui_cell_primary">
-                <input class="weui_input" type="number" placeholder="0">
+                <input class="weui_input" type="number" placeholder="0" name="in_index" id="in_index" value="0" readonly="readonly">
             </div>
         </div>
 
@@ -42,7 +37,7 @@
 				<label class="weui_label">命令开始提示</label>
             </div>
             <div class="weui_cell_bd weui_cell_primary">
-                <input class="weui_input" type="number" placeholder="第0步">
+                <input class="weui_input" type="text" placeholder="第0步" name="in_s" id="in_s" value="第0步">
             </div>
         </div>
 
@@ -51,7 +46,7 @@
 				<label class="weui_label">命令结束提示</label>
             </div>
             <div class="weui_cell_bd weui_cell_primary">
-                <input class="weui_input" type="number" placeholder="">
+                <input class="weui_input" type="number" placeholder="" name="in_e" id="in_e" value="">
             </div>
         </div>
 
@@ -60,12 +55,12 @@
                 <label for="" class="weui_label">选择命令</label>
             </div>
             <div class="weui_cell_bd weui_cell_primary">
-                <select class="weui_select" name="select2">
-                    <option value="1">恒定温度加热</option>
-                    <option value="2">仅仅显示</option>
-                    <option value="3">恒定功率加热</option>
-                    <option value="4">加热/降温到温度</option>
-                    <option value="5">停止加热<option>
+                <select class="weui_select" name="in_2" id="in_2">
+                    <option value="0">仅仅显示</option>
+                    <option value="1">恒定功率加热</option>
+                    <option value="2">加热/降温到温度</option>
+                    <option value="3" selected="selected">恒定温度加热</option>
+                    <option value="4">停止加热</option>
                 </select>
             </div>
         </div>
@@ -75,9 +70,9 @@
                 <label for="" class="weui_label">完成处理</label>
             </div>
             <div class="weui_cell_bd weui_cell_primary">
-                <select class="weui_select" name="select2">
-                    <option value="1">自动执行下一步</option>
-                    <option value="2">等待人工操作</option>
+                <select class="weui_select" name="select" name="in_3" id="in_3">
+                    <option value="s">等待人工操作</option>
+                    <option value="n" selected="selected">自动执行下一步</option>
                 </select>
             </div>
         </div>
@@ -87,7 +82,7 @@
 				<label class="weui_label">温度/功率</label>
             </div>
             <div class="weui_cell_bd weui_cell_primary">
-                <input class="weui_input" type="number" placeholder="180">
+                <input class="weui_input" type="number" placeholder="180" name="in_4" id="in_4" value="180">
             </div>
         </div>
 
@@ -96,7 +91,7 @@
 				<label class="weui_label">执行时间</label>
             </div>
             <div class="weui_cell_bd weui_cell_primary">
-                <input class="weui_input" type="number" placeholder="240">
+                <input class="weui_input" type="number" placeholder="240" name="in_5" id="in_5" value="240">
             </div>
         </div>
         <a href="javascript:reset_c();" class="weui_btn weui_btn_mini weui_btn_warn">取消所有操作</a>
@@ -109,6 +104,6 @@
     </div>
 
     <script src="cookbook2.js"></script>
-    <script src="run.js"></script>
+    <script src="run2.js"></script>
   </body>
 </html>
